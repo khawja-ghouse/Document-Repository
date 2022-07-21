@@ -72,9 +72,15 @@
 				<!-- Filtering command is used to map all the ${ } values we want in config.properties. 
 				In this example we have many similar references in config.properties.
 				So all the required properties get mapped with corresponding names-->
-				<!-- <includes>
-					<include>*.properties</include>
-				</includes> -->
+				<includes>
+					<include>*.properties</include> 
+					<!-- We are trying to include only the properties file -->
+				</includes>
+				
+				<excludes>
+					<exclude>*.txt</exclude>
+					<!-- We are trying to exclude all the txt files we have in resources-->
+				</excludes>
 
 			</resource>
 		</resources>

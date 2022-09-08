@@ -1,0 +1,40 @@
+
+<schema targetNameSpace="">
+
+	<element>
+</schema>
+
+In one XSD only one target namespace is possible.
+
+<schema targetNamespace = "http://empinfo.com ">
+ <element name = " employee " >
+< complexType >
+< sequence >
+< element name = " empNo " type = " int " / >
+< element name = " name " type = " string " / >
+< element name = " salary " type = " decimal " / > 
+< / sequence >
+< / complexType >
+
+If we want to use the elements from above mentioned XSD then we need to use fully qualified name like this
+
+< http://empinfo.com:employee >
+< http://empinfo.com:empNo > 191 < / http://empinfo.com:empNo >
+< http://empinfo.com:name > rama < / http://empinfo.com:name >
+< http://empinfo.com:salary > 12000 < / http://empinfo.com:salary >
+< / http://empinfo.com:employee >
+
+As namespaces string length is long and using for every element is incresaing the complexcity. Hence we have short name using xmlns="".
+  
+< employee xmlns = " http://empinfo.com "> Using xmlns is like using import statements in java. Once defined then we can use XSD elements without name space
+< empNo > 191 < / empNo >
+< name > rama < / name >
+< salary > 12000 < / salary >
+< / employee >
+
+Above xml can also be written as 
+
+<e:employee xmlns:e = "http://empinfo.com"> 
+	<e:name >rama</e:name >
+	<e:salary>2000</e:salary >
+</e:employee>

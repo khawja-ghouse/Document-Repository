@@ -1,0 +1,391 @@
+Let's drop the existing cats table:
+
+DROP TABLE cats;
+
+CREATE TABLE cats 
+  ( 
+     cat_id INT NOT NULL AUTO_INCREMENT, 
+     name   VARCHAR(100), 
+     breed  VARCHAR(100), 
+     age    INT, 
+     PRIMARY KEY (cat_id) 
+  );
+  
+DESC cats;
+
+mysql> DESC cats;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| cat_id | int          | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100) | YES  |     | NULL    |                |
+| breed  | varchar(100) | YES  |     | NULL    |                |
+| age    | int          | YES  |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+
+INSERT INTO cats(name, breed, age) 
+VALUES ('Ringo', 'Tabby', 4),
+       ('Cindy', 'Maine Coon', 10),
+       ('Dumbledore', 'Maine Coon', 11),
+       ('Egg', 'Persian', 4),
+       ('Misty', 'Tabby', 13),
+       ('George Michael', 'Ragdoll', 9),
+       ('Jackson', 'Sphynx', 7);
+	   
+	   
+mysql> SELECT * FROM cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo          | Tabby      |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      4 | Egg            | Persian    |    4 |
+|      5 | Misty          | Tabby      |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM cats WHERE name='egG';
++--------+------+---------+------+
+| cat_id | name | breed   | age  |
++--------+------+---------+------+
+|      4 | Egg  | Persian |    4 |
++--------+------+---------+------+
+1 row in set (0.00 sec)
+
+Alias
+
+mysql> SELECT name AS 'cat name', breed AS 'kitty breed' FROM cats;
++----------------+-------------+
+| cat name       | kitty breed |
++----------------+-------------+
+| Ringo          | Tabby       |
+| Cindy          | Maine Coon  |
+| Dumbledore     | Maine Coon  |
+| Egg            | Persian     |
+| Misty          | Tabby       |
+| George Michael | Ragdoll     |
+| Jackson        | Sphynx      |
++----------------+-------------+
+7 rows in set (0.00 sec)
+
+
+
+Update:
+
+
+mysql> SELECT * FROM cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo          | Tabby      |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      4 | Egg            | Persian    |    4 |
+|      5 | Misty          | Tabby      |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE CATS SET name='Ringo K' where age = 4;
+Query OK, 2 rows affected (0.03 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo K        | Tabby      |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      4 | Ringo K        | Persian    |    4 |
+|      5 | Misty          | Tabby      |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+7 rows in set (0.00 sec)
+
+DELETE
+
+mysql> SELECT * FROM cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo K        | Tabby      |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      4 | Ringo K        | Persian    |    4 |
+|      5 | Misty          | Tabby      |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> DELETE FROM cats WHERE name='egg';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo K        | Tabby      |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      4 | Ringo K        | Persian    |    4 |
+|      5 | Misty          | Tabby      |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> DELETE FROM cats;(Deletes all the records present in table same as truncate)
+Query OK, 7 rows affected (0.01 sec)
+
+mysql> SELECT * FROM cats;
+Empty set (0.00 sec)
+
+
+DISTINCT
+
+mysql> SELECT author_lname from books;
++----------------+
+| author_lname   |
++----------------+
+| Lahiri         |
+| Gaiman         |
+| Gaiman         |
+| Lahiri         |
+| Eggers         |
+| Eggers         |
+| Chabon         |
+| Smith          |
+| Eggers         |
+| Gaiman         |
+| Carver         |
+| Carver         |
+| DeLillo        |
+| Steinbeck      |
+| Foster Wallace |
+| Foster Wallace |
++----------------+
+16 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT author_lname from books; SELECT DISTINCT author_fname, author_lname FROM books;
++----------------+
+| author_lname   |
++----------------+
+| Lahiri         |
+| Gaiman         |
+| Eggers         |
+| Chabon         |
+| Smith          |
+| Carver         |
+| DeLillo        |
+| Steinbeck      |
+| Foster Wallace |
++----------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM books;
++---------+-----------------------------------------------------+--------------+----------------+---------------+----------------+-------+
+| book_id | title                                               | author_fname | author_lname   | released_year | stock_quantity | pages |
++---------+-----------------------------------------------------+--------------+----------------+---------------+----------------+-------+
+|       1 | The Namesake                                        | Jhumpa       | Lahiri         |          2003 |             32 |   291 |
+|       2 | Norse Mythology                                     | Neil         | Gaiman         |          2016 |             43 |   304 |
+|       3 | American Gods                                       | Neil         | Gaiman         |          2001 |             12 |   465 |
+|       4 | Interpreter of Maladies                             | Jhumpa       | Lahiri         |          1996 |             97 |   198 |
+|       5 | A Hologram for the King: A Novel                    | Dave         | Eggers         |          2012 |            154 |   352 |
+|       6 | The Circle                                          | Dave         | Eggers         |          2013 |             26 |   504 |
+|       7 | The Amazing Adventures of Kavalier & Clay           | Michael      | Chabon         |          2000 |             68 |   634 |
+|       8 | Just Kids                                           | Patti        | Smith          |          2010 |             55 |   304 |
+|       9 | A Heartbreaking Work of Staggering Genius           | Dave         | Eggers         |          2001 |            104 |   437 |
+|      10 | Coraline                                            | Neil         | Gaiman         |          2003 |            100 |   208 |
+|      11 | What We Talk About When We Talk About Love: Stories | Raymond      | Carver         |          1981 |             23 |   176 |
+|      12 | Where I'm Calling From: Selected Stories            | Raymond      | Carver         |          1989 |             12 |   526 |
+|      13 | White Noise                                         | Don          | DeLillo        |          1985 |             49 |   320 |
+|      14 | Cannery Row                                         | John         | Steinbeck      |          1945 |             95 |   181 |
+|      15 | Oblivion: Stories                                   | David        | Foster Wallace |          2004 |            172 |   329 |
+|      16 | Consider the Lobster                                | David        | Foster Wallace |          2005 |             92 |   343 |
++---------+-----------------------------------------------------+--------------+----------------+---------------+----------------+-------+
+16 rows in set (0.00 sec)
+
+mysql> SELECT * FROM books ORDER BY author_fname DESC;
++---------+-----------------------------------------------------+--------------+----------------+---------------+----------------+-------+
+| book_id | title                                               | author_fname | author_lname   | released_year | stock_quantity | pages |
++---------+-----------------------------------------------------+--------------+----------------+---------------+----------------+-------+
+|      11 | What We Talk About When We Talk About Love: Stories | Raymond      | Carver         |          1981 |             23 |   176 |
+|      12 | Where I'm Calling From: Selected Stories            | Raymond      | Carver         |          1989 |             12 |   526 |
+|       8 | Just Kids                                           | Patti        | Smith          |          2010 |             55 |   304 |
+|       2 | Norse Mythology                                     | Neil         | Gaiman         |          2016 |             43 |   304 |
+|       3 | American Gods                                       | Neil         | Gaiman         |          2001 |             12 |   465 |
+|      10 | Coraline                                            | Neil         | Gaiman         |          2003 |            100 |   208 |
+|       7 | The Amazing Adventures of Kavalier & Clay           | Michael      | Chabon         |          2000 |             68 |   634 |
+|      14 | Cannery Row                                         | John         | Steinbeck      |          1945 |             95 |   181 |
+|       1 | The Namesake                                        | Jhumpa       | Lahiri         |          2003 |             32 |   291 |
+|       4 | Interpreter of Maladies                             | Jhumpa       | Lahiri         |          1996 |             97 |   198 |
+|      13 | White Noise                                         | Don          | DeLillo        |          1985 |             49 |   320 |
+|      15 | Oblivion: Stories                                   | David        | Foster Wallace |          2004 |            172 |   329 |
+|      16 | Consider the Lobster                                | David        | Foster Wallace |          2005 |             92 |   343 |
+|       5 | A Hologram for the King: A Novel                    | Dave         | Eggers         |          2012 |            154 |   352 |
+|       6 | The Circle                                          | Dave         | Eggers         |          2013 |             26 |   504 |
+|       9 | A Heartbreaking Work of Staggering Genius           | Dave         | Eggers         |          2001 |            104 |   437 |
++---------+-----------------------------------------------------+--------------+----------------+---------------+----------------+-------+
+
+LIMIT 
+
+mysql> SELECT * FROM books ORDER BY pages DESC LIMIT 3;
++---------+-------------------------------------------+--------------+--------------+---------------+----------------+-------+
+| book_id | title                                     | author_fname | author_lname | released_year | stock_quantity | pages |
++---------+-------------------------------------------+--------------+--------------+---------------+----------------+-------+
+|       7 | The Amazing Adventures of Kavalier & Clay | Michael      | Chabon       |          2000 |             68 |   634 |
+|      12 | Where I'm Calling From: Selected Stories  | Raymond      | Carver       |          1989 |             12 |   526 |
+|       6 | The Circle                                | Dave         | Eggers       |          2013 |             26 |   504 |
++---------+-------------------------------------------+--------------+--------------+---------------+----------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT title, released_year FROM books
+    -> ORDER BY released_year DESC LIMIT 0,5;
++----------------------------------+---------------+
+| title                            | released_year |
++----------------------------------+---------------+
+| Norse Mythology                  |          2016 |
+| The Circle                       |          2013 |
+| A Hologram for the King: A Novel |          2012 |
+| Just Kids                        |          2010 |
+| Consider the Lobster             |          2005 |
++----------------------------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT title, author_fname FROM books WHERE author_fname LIKE '%da%';
++-------------------------------------------+--------------+
+| title                                     | author_fname |
++-------------------------------------------+--------------+
+| A Hologram for the King: A Novel          | Dave         |
+| The Circle                                | Dave         |
+| A Heartbreaking Work of Staggering Genius | Dave         |
+| Oblivion: Stories                         | David        |
+| Consider the Lobster                      | David        |
++-------------------------------------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT title, author_fname FROM books WHERE author_fname LIKE 'da%';
++-------------------------------------------+--------------+
+| title                                     | author_fname |
++-------------------------------------------+--------------+
+| A Hologram for the King: A Novel          | Dave         |
+| The Circle                                | Dave         |
+| A Heartbreaking Work of Staggering Genius | Dave         |
+| Oblivion: Stories                         | David        |
+| Consider the Lobster                      | David        |
++-------------------------------------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT title, author_fname FROM books WHERE author_fname LIKE '%nd';
++-----------------------------------------------------+--------------+
+| title                                               | author_fname |
++-----------------------------------------------------+--------------+
+| What We Talk About When We Talk About Love: Stories | Raymond      |
+| Where I'm Calling From: Selected Stories            | Raymond      |
++-----------------------------------------------------+--------------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> SELECT title, stock_quantity FROM books WHERE stock_quantity LIKE '___';
++-------------------------------------------+----------------+
+| title                                     | stock_quantity |
++-------------------------------------------+----------------+
+| A Hologram for the King: A Novel          |            154 |
+| A Heartbreaking Work of Staggering Genius |            104 |
+| Coraline                                  |            100 |
+| Oblivion: Stories                         |            172 |
++-------------------------------------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT SUM(stock_quantity) FROM books;
++---------------------+
+| SUM(stock_quantity) |
++---------------------+
+|                1134 |
++---------------------+
+1 row in set (0.01 sec)
+
+
+mysql> SELECT COUNT(stock_quantity) FROM books where stock_quantity > 100;
++-----------------------+
+| COUNT(stock_quantity) |
++-----------------------+
+|                     3 |
++-----------------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> SELECT CONCAT('In ', released_year, ' ', COUNT(*), ' book(s) released') AS year FROM books GROUP BY released_year;
++----------------------------+
+| year                       |
++----------------------------+
+| In 2003 2 book(s) released |
+| In 2016 1 book(s) released |
+| In 2001 2 book(s) released |
+| In 1996 1 book(s) released |
+| In 2012 1 book(s) released |
+| In 2013 1 book(s) released |
+| In 2000 1 book(s) released |
+| In 2010 1 book(s) released |
+| In 1981 1 book(s) released |
+| In 1989 1 book(s) released |
+| In 1985 1 book(s) released |
+| In 1945 1 book(s) released |
+| In 2004 1 book(s) released |
+| In 2005 1 book(s) released |
++----------------------------+
+14 rows in set (0.00 sec)
+
+
+mysql> SELECT
+    ->     title,
+    ->     author_lname,
+    ->     released_year FROM books
+    -> WHERE author_lname='Eggers'
+    ->     AND released_year > 2010;
++----------------------------------+--------------+---------------+
+| title                            | author_lname | released_year |
++----------------------------------+--------------+---------------+
+| A Hologram for the King: A Novel | Eggers       |          2012 |
+| The Circle                       | Eggers       |          2013 |
++----------------------------------+--------------+---------------+
+2 rows in set (0.00 sec)
+
+
+mysql> SELECT title, released_year FROM books WHERE released_year >= 2004 && released_year <= 2015;
++----------------------------------+---------------+
+| title                            | released_year |
++----------------------------------+---------------+
+| A Hologram for the King: A Novel |          2012 |
+| The Circle                       |          2013 |
+| Just Kids                        |          2010 |
+| Oblivion: Stories                |          2004 |
+| Consider the Lobster             |          2005 |
++----------------------------------+---------------+
+5 rows in set, 1 warning (0.00 sec)
+
+mysql>
+mysql> SELECT title, released_year FROM books
+    -> WHERE released_year BETWEEN 2004 AND 2015;
++----------------------------------+---------------+
+| title                            | released_year |
++----------------------------------+---------------+
+| A Hologram for the King: A Novel |          2012 |
+| The Circle                       |          2013 |
+| Just Kids                        |          2010 |
+| Oblivion: Stories                |          2004 |
+| Consider the Lobster             |          2005 |
++----------------------------------+---------------+
+5 rows in set (0.00 sec)
+
+

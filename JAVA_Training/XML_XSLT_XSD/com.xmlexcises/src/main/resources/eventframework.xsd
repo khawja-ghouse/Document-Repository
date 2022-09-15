@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://attunedlabs.com/internalevents/Dispatcher"
+	elementFormDefault="qualified">
+
+	<xs:element name="EventFramework">
+		<!-- XSD validation rules go inside this xs:elemet tag -->
+		<xs:complexType>
+			<!-- Elements inside the sequence must fallow the specified order -->
+			<xs:sequence>
+				<xs:element name="DispatchChanels">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DispatchChanel" minOccurs="1"
+								maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>l
+										<xs:element name="ChanelImplementation">
+											<xs:complexType>
+												<xs:attribute name="fqcn" type="xs:string"></xs:attribute>
+												<xs:attribute name="beanRefid" type="xs:string"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ChanelConfiguration">
+											<xs:complexType mixed="true">
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:string" />
+									<xs:attribute name="description" type="xs:string" />
+									<xs:attribute name="isEnabled" type="xs:boolean" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="SystemEvents" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SystemEvent" minOccurs="1"
+								maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CamelSystemEventBuilder"
+											minOccurs="1">
+											<xs:complexType>
+												<xs:attribute name="fqcn" type="xs:string"></xs:attribute>
+												<xs:attribute name="beanRefid" type="xs:string"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="EventDispatchers">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="EventDispatcher">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="DispatchChanelId"
+																	maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType mixed="true">
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="EventTransformation"
+																	maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="CustomTransformer"
+																				maxOccurs="unbounded" minOccurs="0">
+																				<xs:complexType>
+																					<xs:attribute name="fqcn" type="xs:string"></xs:attribute>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																		<xs:attribute name="Type" type="xs:string"></xs:attribute>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:string" />
+									<xs:attribute name="description" type="xs:string" />
+									<xs:attribute name="isEnabled" type="xs:boolean" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="Events" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Event" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+
+										<xs:element name="EventParams" minOccurs="0"
+											maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="EventParam" minOccurs="1"
+														maxOccurs="unbounded" />
+												</xs:sequence>
+												<xs:attribute name="dataType" type="xs:string" />
+												<xs:attribute name="validationRegEx" type="xs:string" />
+												<xs:attribute name="name" type="xs:string" />
+											</xs:complexType>
+										</xs:element>
+
+										<xs:element name="CamelEventProducer" minOccurs="0"
+											maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CamelProducerConfig"
+														minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:attribute name="component" type="xs:string" />
+															<xs:attribute name="feature" type="xs:string" />
+															<xs:attribute name="raiseOn" type="xs:string" />
+															<xs:attribute name="serviceName" type="xs:string" />
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="CamelEventBuilder" minOccurs="0"
+														maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+
+																<xs:element name="OGNLMapping" minOccurs="0"
+																	maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Source" minOccurs="0"
+																				maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="EventMapping"
+																							minOccurs="0" maxOccurs="unbounded">
+																							<xs:complexType>
+																								<xs:attribute name="destination"
+																									type="xs:string" />
+																								<xs:attribute name="source" type="xs:string" />
+																							</xs:complexType>
+
+																						</xs:element>
+																					</xs:sequence>
+
+																					<xs:attribute name="from" type="xs:string" />
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+
+																<xs:element name="EventBuilder" minOccurs="0">
+																	<xs:complexType>
+																		<xs:attribute name="beanRefid" type="xs:string" />
+																		<xs:attribute name="fqcn" type="xs:string" />
+																	</xs:complexType>
+																</xs:element>
+
+															</xs:sequence>
+															<xs:attribute name="type" type="xs:string" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+
+										<xs:element name="EventDispatchers">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="EventDispatcher">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="DispatchChanelId"
+																	maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType mixed="true">
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="EventTransformation"
+																	maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="XSLTName" minOccurs="0"
+																				maxOccurs="unbounded" />
+																			<xs:element name="CustomTransformer"
+																				maxOccurs="unbounded" minOccurs="0">
+																				<xs:complexType>
+																					<xs:attribute name="fqcn" type="xs:string"></xs:attribute>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																		<xs:attribute name="Type" type="xs:string"></xs:attribute>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:string" />
+									<xs:attribute name="isEnabled" type="xs:boolean" />
+									<xs:attribute name="type" type="xs:string" />
+									<xs:attribute name="description" type="xs:string" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -65,6 +65,7 @@ public class Dqueue {
 			System.out.println(" Empty ");
 			return;
 		}
+		array[front] = 0;
 		// If queue is initially empty
 		if (front == rear) {
 			front = -1;
@@ -80,6 +81,7 @@ public class Dqueue {
 			System.out.println(" Empty ");
 			return;
 		}
+		array[rear] = 0;
 		// If queue is initially empty
 		if (rear == front) {
 			front = -1;
@@ -108,5 +110,18 @@ public class Dqueue {
 			return -1;
 		}
 		return array[rear];
+	}
+
+	public void printDqueue() {
+		if (isEmpty()) {
+			System.out.println("[]");
+		} else if (rear == 0 && front == 0) {
+			System.out.println(array[0]);
+		} else {
+			for (int i = 0; i < array.length; i++) {
+				System.out.print(array[i] + ",");
+			}
+			System.out.println();
+		}
 	}
 }

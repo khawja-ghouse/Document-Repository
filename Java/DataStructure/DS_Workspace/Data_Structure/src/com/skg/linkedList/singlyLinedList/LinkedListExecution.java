@@ -17,6 +17,11 @@ public class LinkedListExecution {
 		linkedList.insertAtPosition(3, 21);
 		linkedList.printLinkedList();
 		linkedList.insertAtPosition(2, 81);
+		linkedList.printLinkedList();
+		System.out.println(linkedList.deleteNodeAtBegining());
+		linkedList.printLinkedList();
+		System.out.println(linkedList.deleteNodeAtEnd());
+		linkedList.printLinkedList();
 	}
 
 }

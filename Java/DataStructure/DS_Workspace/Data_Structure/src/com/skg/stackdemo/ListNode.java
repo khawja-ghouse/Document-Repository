@@ -1,4 +1,4 @@
-package com.skg.linkedList.singlyLinedList;
+package com.skg.stackdemo;
 
 public class ListNode {
 

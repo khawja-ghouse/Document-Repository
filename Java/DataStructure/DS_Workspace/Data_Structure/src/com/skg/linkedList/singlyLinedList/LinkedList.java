@@ -1,5 +1,7 @@
 package com.skg.linkedList.singlyLinedList;
 
+import java.util.List;
+
 public class LinkedList {
 
 	ListNode head;
@@ -53,15 +55,45 @@ public class LinkedList {
 	}
 
 	public void printLinkedList() {
-		System.out.println("inside printLinkedList");
-		if (head != null) {
-			ListNode temp = head;
-			while (temp.getNext() != null) {
-				System.out.println(temp.getData());
-				temp = temp.getNext();
-			}
-			System.out.println(temp.getData());
+
+		ListNode currentNode = head;
+
+		while (currentNode != null) {
+			System.out.print(currentNode+ ",");
+			currentNode = currentNode.getNext();
 		}
+		System.out.println();
+	}
+
+	public ListNode deleteNodeAtBegining() {
+		ListNode node = head;
+
+		if (node != null) {
+			head = node.getNext();
+			node.setNext(null);
+		}
+		// System.out.println(node);
+		return node;
+	}
+
+	public ListNode deleteNodeAtEnd() {
+
+		if (head == null)
+			return null;
+
+		ListNode p = head, next = head.getNext(), q = null;
+		if (head.getNext() == null) {
+			head = null;
+			return p;
+		}
+
+		while ((next = p.getNext()) != null) {
+			q = p;
+			p = next;
+		} // next = 1, q = 2, p = 3
+		q.setNext(null);
+
+		return p;
 	}
 
 }

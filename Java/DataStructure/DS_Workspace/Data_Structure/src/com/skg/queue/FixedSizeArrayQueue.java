@@ -49,17 +49,20 @@ public class FixedSizeArrayQueue {
 	public boolean isEmpty() {
 		return size == 0;
 	}
-	
-	public String  toString() {
+
+	public String toString() {
 		String result = "[";
-		
+
 		for (int i = 0; i < size; i++) {
 			result += Integer.toString(queueRep[(front + 1) % CAPACITY]);
-			
-			if(i < size -1) {
+
+			if (i < size - 1) {
 				result += ",";
 			}
 		}
+
+		result += "]";
+		return result;
 	}
 
 }

@@ -11,7 +11,31 @@ public class LinkedListQueue {
 	}
 
 	public void enqueue(int data) {
+		ListNode listNode = new ListNode(data);
+		if (isEmpty())
+			front = listNode;
+		else
+			rare.setNext(listNode);
+		rare = listNode;
+		length++;
+	}
 
+	public int deQueue() throws Exception {
+		if (isEmpty())
+			throw new Exception();
+		int result = front.getData();
+		front = front.getNext();
+		length--;
+		if (isEmpty())
+			rare = null;
+
+		return result;
+	}
+
+	public int first() throws Exception {
+		if (isEmpty())
+			throw new Exception();
+		return front.getData();
 	}
 
 	public boolean isEmpty() {
@@ -20,5 +44,15 @@ public class LinkedListQueue {
 
 	public int size() {
 		return length;
+	}
+
+	public String toString() {
+		String result = "";
+		ListNode currentNode = front;
+
+		while (currentNode != null) {
+			result = result + currentNode.getNext();
+		}
+		return result;
 	}
 }

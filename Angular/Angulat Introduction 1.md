@@ -31,20 +31,20 @@ Like JavaScript modules, NgModules can import functionality from other NgModules
 
 ### Components
 
-Every Angular application has at least one component, the _root component_ that connects a component hierarchy with the page document object model (DOM). Each component defines a class that contains application data and logic, and is associated with an HTML _template_ that defines a view to be displayed in a target environment.
+Every Angular application has at least one component, the _root component_ that connects a component hierarchy with the page **document object model (DOM)**. Each component defines a class that contains application data and logic, and is associated with an HTML _template_ that defines a view to be displayed in a target environment.
 
 The `@[Component](https://angular.io/api/core/Component)()` decorator identifies the class immediately below it as a component, and provides the template and related component-specific metadata.
 
 ### Templates, directives, and data binding
 A template combines HTML with Angular markup that can modify HTML elements before they are displayed. Template _directives_ provide program logic, and _binding markup_ connects your application data and the DOM. There are two types of data binding:
-- Eveny binding: Lets your application respond to user input in the target environment by updating your application data.
-- Property binding: Lets you interpolate values that are computed from your application data into the HTML.
+- Event binding: Lets your application respond to user input in the target environment by updating your application data.
+- Property binding: Lets you **interpolate** values that are computed from your application data into the HTML.
 
 Before a view is displayed, Angular evaluates the directives and resolves the binding syntax in the template to modify the HTML elements and the DOM, according to your program data and logic. Angular supports _two-way data binding_, meaning that changes in the DOM, such as user choices, are also reflected in your program data.
 
 ### Services and dependency injection
-For data or logic that isn't associated with a specific view, and that you want to share across components, you create a _service_ class. A service class definition is immediately preceded by the `@[Injectable](https://angular.io/api/core/Injectable)()` decorator. The decorator provides the metadata that allows other providers to be **injected** as dependencies into your class.
 
+For data or logic that isn't associated with a specific view, and that you want to share across components, you create a _service_ class. A service class definition is immediately preceded by the `@[Injectable](https://angular.io/api/core/Injectable)()` decorator. The decorator provides the metadata that allows other providers to be **injected** as dependencies into your class.
 _Dependency injection_ (DI) lets you keep your component classes lean and efficient. They don't fetch data from the server, validate user input, or log directly to the console; they delegate such tasks to services.
 
 ### Routing
@@ -55,5 +55,11 @@ The Angular `[Router](https://angular.io/api/router/Router)` NgModule provides
 -   Click the browser's back and forward buttons and the browser navigates backward and forward through the history of pages you've seen
 
 The router maps URL-like paths to views instead of pages. When a user performs an action, such as clicking a link, that would load a new page in the browser, the router intercepts the browser's behavior, and shows or hides view hierarchies.
+
+The fallowing diagram shows how these basic pieces are related
+
+![[./Images/buildingBlocksOfAngular.png]]
+
+
 
 https://angular.io/guide/architecture

@@ -103,10 +103,12 @@ An `@Output()` property should normally be initialized to an Angular [`EventE
                 data flow
 Parent   <--------------- Child 
 
+<div style="background-color:#ccc;padding:5px">
 Just like with @Input, you can use @Output on the property of the child component but its type should be EventEmitter.
+</div>
 
-```Typescript
-ChildComponent.ts
+```ts
+// ChildComponent.ts
 
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 @Component({
@@ -181,3 +183,4 @@ parent.html
 
 </ul>
 ```
+

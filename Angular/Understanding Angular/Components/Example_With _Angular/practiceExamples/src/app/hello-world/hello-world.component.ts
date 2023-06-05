@@ -1,4 +1,7 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges,  OnInit,  SimpleChanges } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges,  OnInit,  SimpleChanges ,ViewChild} from '@angular/core';
+import { AdDirective } from '../ad.directive';
+import { HeroJobAdComponent } from '../hero-job-ad.component';
+import { DirectiveDemoComponent } from '../directive-demo/directive-demo.component';
 
 @Component({
   selector: 'app-hello-world',
@@ -8,6 +11,8 @@ import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, 
 export class HelloWorldComponent  implements OnChanges,OnInit, DoCheck, AfterViewInit, AfterViewChecked, AfterContentInit  {
 
   constructor() { }
+
+  @ViewChild(AdDirective, {static: true}) adHostDirective!: AdDirective;
 
 
   @Input() count!: number;
@@ -19,6 +24,7 @@ export class HelloWorldComponent  implements OnChanges,OnInit, DoCheck, AfterVie
 
   ngOnInit() {
     console.log('Inside ngOnInit!!')
+    this.loadComponent();
   }
 
   ngDoCheck() {
@@ -41,6 +47,13 @@ export class HelloWorldComponent  implements OnChanges,OnInit, DoCheck, AfterVie
     console.log('Inside ngAfterContentInit');
   }
 
+  loadComponent(){
+    const containerRef = this.adHostDirective.viewContainerRef;
+    containerRef.clear();
+    const componentRef = containerRef.createComponent(DirectiveDemoComponent);
+    setTimeout(() => {
+      containerRef.clear();
+    }, 5000);
 
-
+  }
 }

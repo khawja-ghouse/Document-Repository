@@ -10,6 +10,7 @@ import { AdBannerComponent } from './ad-banner.component';
 import { AdDirective } from './ad.directive';
 import { DirectiveDemo } from './directiveDemo.directive';
 import { DirectiveDemoComponent } from './directive-demo/directive-demo.component';
+import { HighlightDirective } from './highlightDirective.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DirectiveDemoComponent } from './directive-demo/directive-demo.componen
     AdBannerComponent,
     AdDirective,
     DirectiveDemo,
-    DirectiveDemoComponent
+    DirectiveDemoComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule

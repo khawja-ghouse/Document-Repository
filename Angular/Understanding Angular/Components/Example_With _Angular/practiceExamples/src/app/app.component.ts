@@ -10,6 +10,7 @@ import { AdItem } from './ad-item';
 export class AppComponent implements OnInit  {
   count = 0;
   ads: AdItem[] = [];
+  color = '';
 
   constructor(private adService: AdService ){
 

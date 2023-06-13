@@ -58,7 +58,7 @@ The router maps URL-like paths to views instead of pages. When a user performs a
 
 The fallowing diagram shows how these basic pieces are related
 
-![[./Images/buildingBlocksOfAngular.png]]
+![[../Images/buildingBlocksOfAngular.png]]
 
 
 

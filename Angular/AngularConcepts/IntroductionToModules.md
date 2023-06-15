@@ -39,11 +39,11 @@ export class AppModule { }
 
 **NgModules provide a _compilation context_ for their components**. A root **NgModule** always has a root component that is created during bootstrap but any **NgModule** can include any number of additional components, which can be loaded through the router or created through the template. The components that belong to an **NgModule** share a compilation context.
 
-![[./Images/NgModule1.png]]
+![](../Images/NgModule1.png)
 
 A component and its template together define a _view_. A component can contain a _view hierarchy_, which allows you to define arbitrarily complex areas of the screen that can be created, modified, and destroyed as a unit. A view hierarchy can mix views defined in components that belong to different NgModules. This is often the case, especially for UI libraries.
 
-![[./Images/NgModule2.png]]
+![](../Images/NgModule2.png)
 
 When you create a component, it's associated directly with a single view, called the _host view_. The host view can be the root of a view hierarchy, which can contain _embedded views_, which are in turn the host views of other components. Those components can be in the same NgModule, or can be imported from other NgModules. Views in the tree can be nested to any depth.
 
@@ -58,7 +58,7 @@ export class AppModule { }
 
 ## Angular libraries
 
-![[./Images/angularLibrary.png]]
+![](../Images/angularLibrary.png)
 
 Angular loads as a collection of JavaScript modules. You can think of them as library modules. Each Angular library name begins with the `@angular` prefix. Install them with the node package manager `npm` and import parts of them with JavaScript `import` statements.
 

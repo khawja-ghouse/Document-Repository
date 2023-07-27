@@ -39,7 +39,7 @@ import {Component } from '@angular/core';
 	`,
 	styleUrls:['./app.scss']
 })
-export class AppComponent{
+export class ChildComponent{
 @Input() childMessage:string;
 constructor(){}
 }

@@ -23,8 +23,7 @@ import com.skg.userproduct.daointerface.IUserDAO;
  */
 public class DAOFactory {
 	/**
-	 * private DAOFactory() :: Private constructor used to avoid creating
-	 * Instances.
+	 * private DAOFactory() :: Private constructor used to avoid creating Instances.
 	 */
 	private DAOFactory() {
 	}
@@ -68,8 +67,8 @@ public class DAOFactory {
 	public static DAOFactory factoryobj = null;
 
 	/**
-	 * getInstance() the method used to return the same DAOfactory instance
-	 * every time its called.
+	 * getInstance() the method used to return the same DAOfactory instance every
+	 * time its called.
 	 * 
 	 * @return returns DAOfactory instance.
 	 */
@@ -81,8 +80,8 @@ public class DAOFactory {
 	}
 
 	/**
-	 * getProductDAOInstance() :: Method used to return FileProductDAO Instance
-	 * or DBProductDAO instance based on the Application properties
+	 * getProductDAOInstance() :: Method used to return FileProductDAO Instance or
+	 * DBProductDAO instance based on the Application properties
 	 * 
 	 * @return returns FileProductDAO and DBProductDAO.
 	 */

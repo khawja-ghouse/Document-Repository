@@ -11,14 +11,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.skg.userproduct.daointerface.IUserDAO;
 import com.skg.userproduct.exception.FileNotSupportException;
 import com.skg.userproduct.exception.GeneralSqlException;
 import com.skg.userproduct.exception.InvalidUserProductException;
 import com.skg.userproduct.model.User;
 import com.skg.userproduct.util.DBConnectionUtil;
-
-import org.apache.log4j.Logger;
 
 /**
  * DBUserDAO :: DBUserDAO class is used to provide the implementation for the
@@ -34,7 +35,7 @@ public class DBUserDAO implements IUserDAO {
 	 * Creating the Logger object called log that is used to get the logging
 	 * information of UserCSVReader class
 	 */
-	final static Logger LOGGER_OBJ = Logger.getLogger(DBUserDAO.class);
+	final static Logger LOGGER_OBJ = LoggerFactory.getLogger(DBUserDAO.class);
 	private static final String SEPERATOR_COMMA = ",";
 	private static final String USERCS_FILENAME = "User.csv";
 	private static final String USEER_QUERY = "INSERT INTO USER VALUES(?,?,?,?,?)";
@@ -46,8 +47,8 @@ public class DBUserDAO implements IUserDAO {
 
 	/**
 	 * exportUserData():: Method used to insert the userCSV file data to the
-	 * database. The User data such as name, id email, mobile number into the
-	 * User table;
+	 * database. The User data such as name, id email, mobile number into the User
+	 * table;
 	 * 
 	 * @throws InvalidUserProductException
 	 * @throws FileNotSupportException
@@ -60,8 +61,7 @@ public class DBUserDAO implements IUserDAO {
 
 		File file = new File(classLoader.getResource(USERCS_FILENAME).getFile());
 		/**
-		 * String line: String fields[] array that contains user data after
-		 * spiting.
+		 * String line: String fields[] array that contains user data after spiting.
 		 */
 		String line, fileds[];
 		boolean skipline = true;
@@ -80,7 +80,7 @@ public class DBUserDAO implements IUserDAO {
 						userobj.setEmail(fileds[2]);
 						userobj.setPhoneNumber(fileds[3]);
 						userobj.setCity(fileds[4]);
-						LOGGER_OBJ.debug(userobj);
+						LOGGER_OBJ.debug("User List ::" + userobj);
 						addUsers(userobj);
 					} catch (Exception e) {
 						throw new InvalidUserProductException("Exception in the Useror product", e);
@@ -100,11 +100,9 @@ public class DBUserDAO implements IUserDAO {
 	}
 
 	/**
-	 * addUsers():: The method used to add the user to the database table
-	 * specified.
+	 * addUsers():: The method used to add the user to the database table specified.
 	 * 
-	 * @param userObj
-	 *            the user that should be added to the database.
+	 * @param userObj the user that should be added to the database.
 	 * @throws FileNotSupportException
 	 * @throws InvalidUserProductException
 	 * @throws SQLException
@@ -146,8 +144,8 @@ public class DBUserDAO implements IUserDAO {
 	}
 
 	/**
-	 * importUserData():: Method used to retrieve the User data from the
-	 * Database and then store in the List.
+	 * importUserData():: Method used to retrieve the User data from the Database
+	 * and then store in the List.
 	 * 
 	 * @return ::returns the list of all product containing in database.
 	 */
@@ -160,7 +158,6 @@ public class DBUserDAO implements IUserDAO {
 		ArrayList<User> UserList = new ArrayList<>();
 		try {
 			con = DBConnectionUtil.getconnection();
-			LOGGER_OBJ.debug(con);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(USEER_selectQUERY);
 			while (rs.next()) {
@@ -172,7 +169,7 @@ public class DBUserDAO implements IUserDAO {
 				userObj.setCity(rs.getString(5));
 				UserList.add(userObj);
 			}
-			LOGGER_OBJ.debug(UserList);
+			LOGGER_OBJ.debug("User List ::" + UserList);
 			return UserList;
 
 		} catch (SQLException ex) {

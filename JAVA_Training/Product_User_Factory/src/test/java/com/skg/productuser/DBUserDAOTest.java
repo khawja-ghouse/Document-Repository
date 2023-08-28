@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.skg.userproduct.daointerface.IUserDAO;
 import com.skg.userproduct.exception.FileNotSupportException;
@@ -21,7 +22,7 @@ import com.skg.userproduct.model.User;
 
 public class DBUserDAOTest {
 
-	final static Logger LOGGER_OBJ = Logger.getLogger(DBUserDAOTest.class);
+	final static Logger LOGGER_OBJ = LoggerFactory.getLogger(DBUserDAOTest.class);
 	private static final String USERCS_FILENAME = "User.csv";
 	private static final String SEPERATOR_COMMA = ",";
 	static ClassLoader classLoader = new ClassLoader() {

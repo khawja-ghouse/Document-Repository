@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.skg.userproduct.daointerface.IProductDAO;
 import com.skg.userproduct.exception.FileNotSupportException;
@@ -35,7 +37,8 @@ public class DBProductDAO implements IProductDAO {
 	 * Creating the Logger object called log that is used to get the logging
 	 * information of UserCSVReader class
 	 */
-	final static Logger LOGGER_OBJ = Logger.getLogger(DBProductDAO.class);
+	final static Logger LOGGER_OBJ = LoggerFactory.getLogger(DBProductDAO.class);
+
 	private static final String ProductCS_FILENAME = "Product.csv";
 	private static final String SEPERATOR = "/";
 	private static final String SEPERATOR_COMMA = ",";
@@ -65,8 +68,7 @@ public class DBProductDAO implements IProductDAO {
 
 		File file = new File(classLoader.getResource(ProductCS_FILENAME).getFile());
 		/**
-		 * String line: String fields[] array that contains user data after
-		 * spiting.
+		 * String line: String fields[] array that contains user data after spiting.
 		 */
 		String line, fileds[];
 		boolean skipLine = true;
@@ -90,7 +92,7 @@ public class DBProductDAO implements IProductDAO {
 					avlist.add(s1[i]);
 				}
 				productObj.setAvailableCity(avlist);
-				LOGGER_OBJ.debug(avlist);
+				LOGGER_OBJ.debug("Available Product List :: " + avlist);
 				addProduct(productObj);
 			}
 			LOGGER_OBJ.debug("done with exporting product DB");
@@ -111,8 +113,7 @@ public class DBProductDAO implements IProductDAO {
 	 * addProduct():: The method used to add the product to the database table
 	 * specified.
 	 * 
-	 * @param productObj
-	 *            the product that should be added to the database.
+	 * @param productObj the product that should be added to the database.
 	 * @throws FileNotSupportException
 	 * @throws InvalidUserProductException
 	 * @throws SQLException
@@ -163,8 +164,8 @@ public class DBProductDAO implements IProductDAO {
 	}
 
 	/**
-	 * exportProductData():: Method used to retrieve the data from the Database
-	 * and then store in the List.
+	 * exportProductData():: Method used to retrieve the data from the Database and
+	 * then store in the List.
 	 * 
 	 * @return ::returns the list of all product containing in database.
 	 */
@@ -197,7 +198,7 @@ public class DBProductDAO implements IProductDAO {
 				p.setAvailableCity(avlist);
 				Productlist.add(p);
 			}
-			LOGGER_OBJ.debug(Productlist);
+			LOGGER_OBJ.debug("Product List ::" + Productlist);
 			return Productlist;
 
 		} catch (SQLException ex) {

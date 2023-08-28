@@ -10,7 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.opencsv.CSVWriter;
 import com.skg.userproduct.daointerface.IUserDAO;
@@ -33,7 +34,7 @@ public class FileUserDAO implements IUserDAO {
 	 * information of FileProductDAO class
 	 */
 
-	final static Logger LOGGER_OBJ = Logger.getLogger(FileUserDAO.class);
+	final static Logger LOGGER_OBJ = LoggerFactory.getLogger(FileUserDAO.class);
 	private static final String EXPORTED_USER_LIST = "UserNew.csv";
 	private static final String USERCS_FILENAME = "User.csv";
 	private static final String SEPERATOR_COMMA = ",";

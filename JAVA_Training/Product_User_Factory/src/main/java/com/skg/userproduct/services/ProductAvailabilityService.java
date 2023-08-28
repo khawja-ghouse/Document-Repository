@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.skg.userproduct.daointerface.IProductDAO;
 import com.skg.userproduct.daointerface.IUserDAO;
@@ -31,7 +32,7 @@ public class ProductAvailabilityService implements IProductAvailabilityService {
 	/**
 	 * Creating the classLoader object through which we can read the resources.
 	 */
-	final static Logger LOGGER_OBJ = Logger.getLogger(ProductAvailabilityService.class);
+	final static Logger LOGGER_OBJ = LoggerFactory.getLogger(ProductAvailabilityService.class);
 	private List<Product> productList;
 	private List<User> userList;
 	DAOFactory factoryObj = DAOFactory.getInstance();
@@ -81,13 +82,13 @@ public class ProductAvailabilityService implements IProductAvailabilityService {
 		List<Product> listP = prodLobj.stream().filter(prod -> prod.getAvailableCity().contains(city))
 				.collect(Collectors.toList());
 
-		//prodLobj.stream().filter(product -> product.getAvailableCity().contains(city)).forEach(System.out::println);
-		
-		prodLobj.stream()
-		        .filter(prod -> prod.getAvailableCity().contains(city))
-		        .filter(product -> product.getProductCategory().equalsIgnoreCase("Laptop"))
-		        .forEach(System.out::println);
-		
+		// prodLobj.stream().filter(product ->
+		// product.getAvailableCity().contains(city)).forEach(System.out::println);
+
+		prodLobj.stream().filter(prod -> prod.getAvailableCity().contains(city))
+				.filter(product -> product.getProductCategory().equalsIgnoreCase("Laptop"))
+				.forEach(System.out::println);
+
 		return listP;
 
 	}
@@ -123,7 +124,7 @@ public class ProductAvailabilityService implements IProductAvailabilityService {
 		ProductAvailabilityService pas;
 		try {
 			pas = new ProductAvailabilityService();
-			LOGGER_OBJ.debug(pas.getAllProductForUser("U1004"));
+			LOGGER_OBJ.debug("" + pas.getAllProductForUser("U1004"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

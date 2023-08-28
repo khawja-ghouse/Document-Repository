@@ -9,7 +9,8 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.opencsv.CSVWriter;
 import com.skg.userproduct.daointerface.IProductDAO;
@@ -31,7 +32,7 @@ public class FileProductDAO implements IProductDAO {
 	 * Creating the Logger object called log that is used to get the logging
 	 * information of FileProductDAO class
 	 */
-	final static Logger LOGGER_OBJ = Logger.getLogger(FileProductDAO.class);
+	final static Logger LOGGER_OBJ = LoggerFactory.getLogger(FileProductDAO.class);
 	private static final String ProductCS_FILENAME = "Product.csv";
 	private static final String EXPORTED_PRODUCT_LIST = "importProduct.csv";
 	private static final String SEPERATOR = "/";
@@ -93,7 +94,6 @@ public class FileProductDAO implements IProductDAO {
 		 * String line: String fields[] array that contains user data after
 		 * spiting.
 		 */
-
 		ArrayList<Product> ProductList = new ArrayList<Product>();
 		Files.lines(new File(file).toPath()).skip(1).map(s2 -> s2.trim()).forEach(linen -> {
 			Product productObj = new Product();

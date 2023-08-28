@@ -26,7 +26,7 @@ public class ProductUserJettyServer {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			// server.destroy();
+			server.destroy();
 		}
 
 	}

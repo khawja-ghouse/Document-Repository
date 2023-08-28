@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skg.userproduct.exception.InvalidUserProductException;
 import com.skg.userproduct.model.Product;
 import com.skg.userproduct.services.ProductAvailabilityService;

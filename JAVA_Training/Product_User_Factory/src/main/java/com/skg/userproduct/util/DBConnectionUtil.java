@@ -9,7 +9,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.skg.userproduct.exception.FileNotSupportException;
 import com.skg.userproduct.exception.GeneralSqlException;
@@ -31,7 +32,7 @@ public class DBConnectionUtil {
 	public static final String USER_NAME = "username";
 	public static final String PASSWORD = "password";
 
-	final static Logger LOGGER_OBJ = Logger.getLogger(DBConnectionUtil.class);
+	final static Logger LOGGER_OBJ = LoggerFactory.getLogger(DBConnectionUtil.class);
 	private static String driver;
 	private static String url;
 	private static String username;
@@ -47,8 +48,7 @@ public class DBConnectionUtil {
 	}
 
 	/**
-	 * getconnection() :: Is the method used to get the connection to the MYSQL
-	 * DB
+	 * getconnection() :: Is the method used to get the connection to the MYSQL DB
 	 * 
 	 * @return returns the connection object
 	 * @throws GeneralSqlException
@@ -59,8 +59,7 @@ public class DBConnectionUtil {
 			throws GeneralSqlException, InvalidUserProductException, FileNotSupportException {
 
 		/**
-		 * Creating the classLoader object through which we can read the
-		 * resources.
+		 * Creating the classLoader object through which we can read the resources.
 		 */
 		ClassLoader classLoader = new ClassLoader() {
 		};

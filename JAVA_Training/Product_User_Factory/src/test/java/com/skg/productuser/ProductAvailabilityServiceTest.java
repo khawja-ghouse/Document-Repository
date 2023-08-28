@@ -10,10 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.skg.userproduct.exception.FileNotSupportException;
 import com.skg.userproduct.exception.InvalidUserProductException;
@@ -22,7 +22,7 @@ import com.skg.userproduct.model.User;
 import com.skg.userproduct.services.ProductAvailabilityService;
 
 public class ProductAvailabilityServiceTest {
-	final static Logger LOGGER_OBJ = Logger.getLogger(ProductAvailabilityServiceTest.class);
+	final static Logger LOGGER_OBJ = LoggerFactory.getLogger(ProductAvailabilityServiceTest.class);
 
 	private static ArrayList<Product> productList = new ArrayList<>();
 	private static ArrayList<User> userList = new ArrayList<>();
@@ -102,8 +102,6 @@ public class ProductAvailabilityServiceTest {
 	@Test
 	public void getAllProductForUsertest() throws InvalidUserProductException, SQLException, IOException {
 		ProductAvailabilityService productAvobj = new ProductAvailabilityService();
-//		System.out.println(productList);
-//		System.out.println(userList);
 		String userId = "U1005";
 		ArrayList<Product> productListnew = new ArrayList<>();
 		Iterator<User> useriterator = userList.iterator();

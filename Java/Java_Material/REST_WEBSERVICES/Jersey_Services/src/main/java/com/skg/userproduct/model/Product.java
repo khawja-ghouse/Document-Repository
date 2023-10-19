@@ -2,6 +2,8 @@ package com.skg.userproduct.model;
 
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * Product:: class that provides the Template of the Product.Where each Product
  * contains ProductId, ProductName,ProductCategory,Price and availableCity.
@@ -9,6 +11,8 @@ import java.util.List;
  * @author Khawja
  * @version 1.0
  */
+
+@XmlRootElement
 public class Product {
 	/**
 	 * ProductId :: Id of the product

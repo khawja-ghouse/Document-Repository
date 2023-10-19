@@ -1,8 +1,5 @@
 package com.skg.userproduct.factory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -22,11 +19,6 @@ import com.skg.userproduct.daointerface.IUserDAO;
  * @version 1.0
  */
 public class DAOFactory {
-	/**
-	 * private DAOFactory() :: Private constructor used to avoid creating Instances.
-	 */
-	private DAOFactory() {
-	}
 
 	/**
 	 * Properties class to read the Application properties.
@@ -46,22 +38,18 @@ public class DAOFactory {
 	private static final String DATABASE = "database";
 
 	public static final String RESOURCE_TYPE = "resourceType";
-	/**
-	 * static block used to read the application properties.
-	 */
-	static {
-		ClassLoader classLoader = new ClassLoader() {
-		};
-		classLoader.getClass().getClassLoader();
-		File file = new File(classLoader.getResource(APPLICATION_PROPERTY_FILE_NAME).getFile());
 
-		FileReader fin;
+	/**
+	 * private DAOFactory() :: Private constructor used to avoid creating Instances.
+	 */
+	private DAOFactory() {
+
 		try {
-			fin = new FileReader(file);
-			pr.load(fin);
-		} catch (FileNotFoundException e) {
+			pr.load(this.getClass().getClassLoader().getResourceAsStream(APPLICATION_PROPERTY_FILE_NAME));
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
+
 	}
 
 	public static DAOFactory factoryobj = null;

@@ -2,9 +2,11 @@ package com.skg.userproduct.resources;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skg.userproduct.exception.InvalidUserProductException;
+import com.skg.userproduct.model.Product;
 import com.skg.userproduct.services.ProductAvailabilityService;
 
 import jakarta.ws.rs.GET;
@@ -29,21 +31,20 @@ public class MyResource {
 	}
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/getAllProductForUser/{userId}")
-	public Response getAllProductForUser(@PathParam("userId") String userId) {
-		Response response = null;
+	public List<Product> getAllProductForUser(@PathParam("userId") String userId) {
 		try {
-			ObjectMapper mapper = new ObjectMapper();
+//			ObjectMapper mapper = new ObjectMapper();
 
-			return response = Response.status(Status.OK)
-					.entity(mapper.writeValueAsString(productAvailabilityService.getAllProductForUser(userId))).build();
-
+//			return response = Response.status(Status.OK)
+//					.entity(mapper.writeValueAsString(productAvailabilityService.getAllProductForUser(userId))).build();
+			return productAvailabilityService.getAllProductForUser(userId);
 		} catch (InvalidUserProductException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return response;
+		return null;
 	}
 
 	@GET

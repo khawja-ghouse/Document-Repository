@@ -82,13 +82,9 @@ public class ProductAvailabilityService implements IProductAvailabilityService {
 		List<Product> listP = prodLobj.stream().filter(prod -> prod.getAvailableCity().contains(city))
 				.collect(Collectors.toList());
 
-		// prodLobj.stream().filter(product ->
-		// product.getAvailableCity().contains(city)).forEach(System.out::println);
-
 		prodLobj.stream().filter(prod -> prod.getAvailableCity().contains(city))
 				.filter(product -> product.getProductCategory().equalsIgnoreCase("Laptop"))
 				.forEach(System.out::println);
-
 		return listP;
 
 	}
@@ -129,7 +125,6 @@ public class ProductAvailabilityService implements IProductAvailabilityService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 }

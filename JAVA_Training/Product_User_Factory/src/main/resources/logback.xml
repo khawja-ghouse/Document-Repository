@@ -14,13 +14,13 @@
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
 		</filter>
-		<!-- <file>D:\cityExercise\info.log</file> -->
+		<file>D:\cityExercise\info.log</file>
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} %p %M %C %m%n</pattern>
 		</encoder>
 		<rollingPolicy
 			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<!-- <fileNamePattern>D:\cityExercise\info.%i.gz</fileNamePattern> -->
+			<fileNamePattern>D:\cityExercise\info.%i.gz</fileNamePattern>
 			<minIndex>1</minIndex>
 			<maxIndex>3</maxIndex>
 		</rollingPolicy>

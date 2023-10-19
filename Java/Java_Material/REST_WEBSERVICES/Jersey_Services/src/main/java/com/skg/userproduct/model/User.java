@@ -1,5 +1,7 @@
 package com.skg.userproduct.model;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * User :: class that provides the Template of the User.Where each User contains
  * userName, userId,email,phoneNumber and city.
@@ -7,6 +9,7 @@ package com.skg.userproduct.model;
  * @author Khawja
  * @version 1.0
  */
+@XmlRootElement
 public class User {
 	/**
 	 * userName :: userName of the User

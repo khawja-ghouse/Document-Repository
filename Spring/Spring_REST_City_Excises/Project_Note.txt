@@ -1,0 +1,5 @@
+1. Simple Maven project web archtype.
+2. Spring version is 5.
+3. Its a Spring Rest Webservices, able to produce JSON for both List and ssingle City in JSON
+4. Able to produce  single City in XML but with list XML is giving issue.
+5. No data base.

@@ -1,0 +1,56 @@
+<configuration>
+	<appender name="LogToConsole"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>
+				%d{HH:mm:ss.SSS} %p %M %C %m%n
+			</pattern>
+		</layout>
+	</appender>
+	<appender name="InfoLogToFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>D:\cityExercise\info.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %p %M %C %m%n</pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>D:\cityExercise\info.%i.gz</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>10KB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+	<appender name="ErrorLogToFile"
+		class="ch.qos.logback.core.FileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<!-- <file>D:\cityExercise\error.log</file> -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %p %M %C %m%n</pattern>
+		</encoder>
+	</appender>
+	<!-- Package Level -->
+	<!-- <Logger name="com.rw.app" level="debug" additivity="false"> -->
+	<!-- <appender-ref ref="LogToConsole" /> -->
+	<!-- <appender-ref ref="InfoLogToFile" /> -->
+	<!-- <appender-ref ref="ErrorLogToFile" /> -->
+	<!-- </Logger> -->
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="LogToConsole" />
+		<appender-ref ref="InfoLogToFile" />
+		<appender-ref ref="ErrorLogToFile" />
+	</root>
+</configuration>

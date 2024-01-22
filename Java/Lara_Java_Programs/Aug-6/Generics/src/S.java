@@ -1,0 +1,4 @@
+class S extends R
+{
+
+} 

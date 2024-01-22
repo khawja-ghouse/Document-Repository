@@ -1,0 +1,7 @@
+class M
+{
+/*	void test()
+	{
+	}*/
+}  
+

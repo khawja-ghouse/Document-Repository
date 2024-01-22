@@ -1,0 +1,51 @@
+
+//finalize() is called by GC on an object when garbage collection determines
+//that there is no more references to the object
+/*
+object class containg finalize() method ==> hence finalize() ava in all the classes 
+--(no matter inbuilt or custom created class )
+
+->finalise()  is calling/executing  by garbage collector 
+-when ever object is  the becoming abbandant 
+
+->object can be  live(min one reference variable) and abbandant(zero reference)
+
+->once object is becoming abbandant then that object is becoming available 
+-for garbage collector
+
+->if the object is not having a single reference variable then it is 
+caled as the abbandant
+
+->finalize method is available in Object class =>
+finalize method is available in every class => 
+then it ill also be available in every  object of that class is created
+
+-> GC comes once in a while  to heap memory to scan to find is there any 
+abbandant object if there is present then it ill call finalize() and remove that 
+object from the memory
+
+-> when object is becoming abbandant ?? ==> 
+when ever last reference is been removed
+at that time the object is becoming abbandant;
+
+-> when object is removing by GC ?? ==> this is uncertain 
+because (we cannot decide when object is removing)
+GC is notcoming to heap memory when object is becoming abbandant 
+hence the GC coming once in  a while which is not known 
+
+-> while removing object from memory GC called finalise() even after calling the 
+finalize() the object is not removed imidiately it is checking that the object is 
+abbandant or live => now if the object is still abbandant then that object is removed
+by GC
+->if the object is becoming live then that is called reserecsion (giving the live 
+means creating another reference )
+
+->if the reserected object is becoming abbandant then GC is not calling the finalise()
+again that object is removed Directly
+
+
+-> on any object GC calling finalize method maximum only once ;
+()
+-> but v can call the GC explicitly two ways
+		System.gc();
+		Runtime.getRuntime().gc();

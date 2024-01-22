@@ -1,0 +1,38 @@
+/*
+Every primitive datatype is having a Wrapperclass
+All the wrapperclass are available in the java.lang. (package)
+
+1.primitive datatype          wrapperclass
+--------------------        ----------------
+	byte			Byte
+	short			Short
+	int			Integer
+	long			Long
+	float			Float
+	double			Double
+	char			Char
+	boolean			Boolean
+
+2.java.lang
+
+
+3.if any pakage available in java.lang we can use directly  without importing 
+=>Every wrapperclass is a final class=>v can not dev subclass to any wrapperclass
+
+4.every wrapper class implementing serializable interface
+bec of serializable interface every wrapper object can write into fileSystem
+
+5.every wrapper class are implementing comparable interface
+
+6. bec of implementing comparable interface every object is eligible for sorting based on content
+
+7.
+
+
+
+8.usage 
+1.boxing 
+2.unboxing
+3.string to primitive (except char datatype)
+4.primitive to string 
+*/

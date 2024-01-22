@@ -1,0 +1,6 @@
+interface D
+{
+	D()
+	{
+	}
+}

@@ -1,0 +1,35 @@
+app1	:	Hello world program
+app2	:	Println and print statements
+app3	:	Local variable
+app4	:	unary operator
+app5	:	Binary operation
+app6	:	if block
+app7	:	else block
+app8	:	switch cases
+app9	:	ternary operator
+app10	:	for loop
+app11	:	for each or enhanced loop
+app12	:	while loop
+app13	:	do while
+//
+app14	:	static methods
+app15	:	static methods continuation........
+app16	:	Static 
+app17	:	static initialization block(SIB)
+app18	:	static method usage in different classes
+app19	:	static control flow
+app20	:	class-object
+app21	:	constructors
+app22	:	IIB(instance intialization block)
+app23	:	Inheritance
+app24	:	packages
+app25	: 	Private acess
+app26	:	defalut , protected and public acces specifier
+app27	:	Abstract classes
+app28	:	Interfaces
+app29	:	method overloading and method overrideing
+app30	:	casting (primitive casting derived casting) Primitive casting
+app31	:	Derived type casting
+app32	:	Polymorphism
+app33	:	final
+app34	:	final continue...

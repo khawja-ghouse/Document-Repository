@@ -73,7 +73,6 @@ There are various text generation techniques in AI, including:
 3. **Sequence-to-Sequence (Seq2Seq) Models**
 4. **Generative Adversarial Networks (GANs)**
 
-
 Prompt
 In the context of AI and language models, a prompt refers to the input or stimulus provided to the model to generate or complete a specific piece of text. It serves as guidance or instruction for the model to generate text that aligns with the given prompt.
 

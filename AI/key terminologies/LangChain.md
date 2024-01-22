@@ -11,8 +11,7 @@ Generating, sharing, and reusing prompts in a reproducible manner can be achieve
 
 These include a text string or template that takes inputs and produces a prompt for the LLM, instructions to train the LLM, few-shot examples to enhance the model’s response, and a question to guide the language model.
 
-These pre-defined recipes can contain instructions, context, few-shot examples, and questions that are appropriate for a particular task.
-
+ 
 LangChain offers a set of tools for creating and working with prompt templates. These templates are designed to be model-agnostic, making them easier to reuse across different language models. Language models generally require prompts to be in the form of a string or a list of chat messages.
 
 Why Use Prompt Templates? Prompt templates are useful when multiple inputs are needed, making code cleaner and more manageable.
@@ -34,7 +33,6 @@ Well large language models receive as input something which is called a prompt.
 What is a prompt is simply text input that we give the LM and the processes it and returns us an output.
 
 So for each different prompt I will get different output because the input was different. So this is the first abstraction that langchain is introducing us its prompt template. And it's simply a wrapper class around a prompt. So it adds functionality to prompt to receive an input. For example, we can run this prompt now many times with different inputs.
-
 
 ## Agent
 
@@ -69,3 +67,5 @@ LangChain provides a wide set of toolkits to get started. For a full list of bui
 ### AgentExecutor[​](https://python.langchain.com/docs/modules/agents/#agentexecutor "Direct link to AgentExecutor")
 
 The agent executor is the runtime for an agent. This is what actually calls the agent, executes the actions it chooses, passes the action outputs back to the agent, and repeats. In pseudocode, this looks roughly like:
+
+

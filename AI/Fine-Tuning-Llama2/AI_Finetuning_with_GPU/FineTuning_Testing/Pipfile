@@ -1,0 +1,57 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "ndex-url"
+verify_ssl = true
+name = ""
+
+[[source]]
+url = "ndex-url"
+verify_ssl = true
+name = ""
+
+[[source]]
+url = "ndex-url"
+verify_ssl = true
+name = ""
+
+[[source]]
+url = "ndex-url"
+verify_ssl = true
+name = ""
+
+[[source]]
+url = "https://download.pytorch.org/whl/cu121"
+verify_ssl = true
+name = "downloadpytorch"
+
+[[source]]
+url = "https://download.pytorch.org/whl/cu121"
+verify_ssl = true
+name = "downloadpytorch"
+
+[[source]]
+url = "https://download.pytorch.org/whl/cu121"
+verify_ssl = true
+name = "downloadpytorch"
+
+[packages]
+datasets = "*"
+peft = "*"
+trl = "*"
+bitsandbytes = "*"
+accelerate = "*"
+torch = {version = "*", index = "downloadpytorch"}
+torchvision = {version = "*", index = "downloadpytorch"}
+torchaudio = {version = "*", index = "downloadpytorch"}
+tensorboardx = "*"
+transformers = "==4.31"
+xformers = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

@@ -1,0 +1,40 @@
+Adding and modifying the existing XML file with Java
+----------------------------------------------------
+try {
+				// Step 1: Parse the existing XML file
+				File xmlFile = new File(execFile);
+				DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+				docFactory.setNamespaceAware(false); // Disable namespace awareness
+				DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+				
+				Document doc = docBuilder.parse(xmlFile);
+ 
+				// Step 2: Create the new route element
+				Element routeElement = doc.createElement("route");
+				routeElement.setAttribute("id", "executionEnrichmentRoute");
+ 
+				Element fromElement = doc.createElement("from");
+				fromElement.setAttribute("uri", "direct:dsfgdfg");
+ 
+				Element toElement = doc.createElement("to");
+				toElement.setAttribute("uri", "direct:fdgdf");
+ 
+				routeElement.appendChild(fromElement);
+				routeElement.appendChild(toElement);
+ 
+				// Step 3: Append the new route element to the routeContext
+				Node routeContextNode = doc.getElementsByTagName("routeContext").item(0);
+				routeContextNode.appendChild(routeElement);
+ 
+				// Step 4: Write the modified DOM back to the XML file
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource source = new DOMSource(doc);
+				StreamResult result = new StreamResult(xmlFile);
+				transformer.transform(source, result);
+ 
+				System.out.println("New route added successfully.");
+ 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}

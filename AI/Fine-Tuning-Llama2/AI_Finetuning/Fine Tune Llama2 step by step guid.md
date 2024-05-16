@@ -13,7 +13,7 @@ Llama-2-Chat, which is optimized for dialogue, has shown similar performance to 
    
    ` pipenv install datasets peft trl torch transformers(version 4.31)`
    Install torch from this web site based on the CUDA version. [Pytorch]([PyTorch](https://pytorch.org/))
-   ![[Pasted image 20240408121225.png]]
+   ![[PyTorchLin_Selection.png]]
    In **pipenv** the command is 
    `pipenv install torch torchvision torchaudio -i https://download.pytorch.org/whl/cu118`
    
@@ -49,7 +49,7 @@ luca_dataset = "khwaja2708/luca-cli"
 new_model = "llama-2-7b-chat-luca""
 ```
 If you to know dataset mentioned above, you can find here [khawja2708/Luca-cli]([leap-cli-1.0.1.jsonl · khwaja2708/luca-cli at main (huggingface.co)](https://huggingface.co/datasets/khwaja2708/luca-cli/blob/main/leap-cli-1.0.1.jsonl)).
-![[Pasted image 20240408123226.png]]
+![[HuggingFaceDataSetImage.png]]
 
 The prompt template we are using is 
 ```
@@ -75,7 +75,7 @@ QLoRA quantizes a pre-trained language model to 4 bits and freezes the parameter
 
 During fine-tuning, gradients are backpropagated through the frozen 4-bit quantized model into only the Low-Rank Adapter layers. So, the entire pretrained model remains fixed at 4 bits while only the adapters are updated. Also, the 4-bit quantization does not hurt model performance.
 
-![[Pasted image 20240408124438.png]]
+![[FinetuningLoRAQLoRA.png]]
 
 In our case, we create 4-bit quantization with NF4 type configuration using BitsAndBytes.
 
@@ -229,11 +229,11 @@ while question != 'exit':
 ```
 
 A successful train will have logs as shown below: 
-![[Pasted image 20240408142514.png]]
+![[Result_Of_Model_Trained.png]]
 
-![[Pasted image 20240408151847.png]]
+![[TestingFineTunedModel.png]]
 
-![[Pasted image 20240408151913.png]]
+![[TestingFineTunedModel2.png]]
 
 This are the file that would be generated on successful training the model under the folder **llama-2-7b-chat-luca** (New Model name)
-![[Pasted image 20240408152131.png]]
+![[ResultFilesOfFinetunedModel.png]]

@@ -5,10 +5,10 @@ GGUF, introduced by the llama.cpp team, is a replacement for GGML, which is no l
 
 In order to convert the hugging face model to GGUF we will be needing Pytorch-model.bin files with base model weights added to new model created weights.
 
-![[Pasted image 20240408152131.png]]
+![[ResultFilesOfFinetunedModel.png]]
 
 Add this files to the Hugging face repo as shown below. In the below image we have ggfu file but as of now you will not be having that file please skip this file.
-![[Pasted image 20240408161401.png]]
+![[HuggingFaceModelRepository.png]]
 
 If we just use the above files to generate GGFU file it throws error of **unknow weight layer.0** as we have not merge the LoRA weights with the base model. In order to merge LoRA weights with base model we need to fallow this steps:
 1. Reload the base model.
@@ -50,7 +50,7 @@ tokenizer.save_pretrained("C:\Luca_Model\llama-2-7b-chat-luca\merged")
 
 Once this is executed successfully then your base model is merged with LoRA weights and generates more **Pytorch-mode.bin** files with **generation_config.json** file as shown below:
 
-![[Pasted image 20240408162044.png]]
+![[LucaModelWeightedFiles.png]]
 
 
 
@@ -60,7 +60,7 @@ In order to generate GGFU file please have a look at [Github link]([Tutorial: Ho
 
 Once you have cloned the llama.cpp & ready with folder structure as shown in above link
 
-![[Pasted image 20240408164253.png]]
+![[LucaModelFiles.png]]
 
 
 
@@ -72,14 +72,14 @@ On the final command > python llama.cpp/convert.py llama-2-7b-chat-luca
 
 Once this is successfully completed without any error we will be ready with GUFF file.
 
-![[Pasted image 20240408164809.png]]
+![[GGUFModelGenerated.png]]
 
 So, the final step to integrate the gguf with ollama environment. If you can go through the youtube video shown at start [Ollama:Hugging face model]([https://youtu.be/TFwYvHZV6j0?si=rOmQlIQGnNcOd25M](https://youtu.be/TFwYvHZV6j0?si=rOmQlIQGnNcOd25M "https://youtu.be/tfwyvhzv6j0?si=romqliqgnncod25m")). Its just two easy steps to integrate. 
 1. Create a  Modelfile with GGUF.
 2. Use Ollama create command to transfer new model data to ollama.
-![[Pasted image 20240408170013.png]]
+![[CreationOfModelFile.png]]
 Once successfully completed, Ollama environment is now available with  lucaGPT is ready with  
-![[Pasted image 20240408174110.png]]
+![[TrainedModelIntegratedWithOllama.png]]
 
 Final interaction: 
-![[Pasted image 20240408174430.png]]
+![[OllamaRunningLucaGPT.png]]

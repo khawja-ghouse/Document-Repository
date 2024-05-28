@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDao {
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+//	@Autowired
+//	private JdbcTemplate jdbcTemplate;
 }

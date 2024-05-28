@@ -1,9 +1,7 @@
 1.  **@SpringBootApplication**
 	`@SpringBootApplication` annotation is a shortcut that combines the functionality of three other annotations:
 	- `@Configuration`: This annotation indicates that a class provides Spring bean definitions. These are essentially objects managed by the Spring framework.
-	    
 	- `@EnableAutoConfiguration`: This one tells Spring Boot to automatically configure a lot of things for your application based on the libraries you have on your classpath and other beans in your application. This saves you a bunch of configuration work.
-	    
 	- `@ComponentScan`: This annotation tells Spring to scan a specific package (and its sub-packages) for classes annotated with `@Component`, `@Controller`, `@Service`, or other Spring stereotypes. This way, Spring can find these classes and create beans from them.
 	  
 2. **@RestController**
@@ -38,4 +36,17 @@ public User getUserByID(@PathVariable long userId) {
 ```
 	The name of the annotation attribute (`value` or `name`) specifies the name you want to use for the path variable. This name should match the placeholder name in the URL. Spring intercepts incoming requests and matches them to controller methods based on the URL pattern. When a match is found, Spring extracts the corresponding value from the URL path that aligns with the placeholder and assigns it to the method parameter annotated with `@PathVariable`.
 	You can mark `@PathVariable` parameters as optional using the `required` attribute set to `false`. This allows handling scenarios where the path variable might be missing in the request.
-	
+6. **@ExceptionHandler**
+
+	There are two ways to use `@ExceptionHandler`:
+	1. **Local Exception Handling:** You can define an `@ExceptionHandler` method within a      controller class. This method will only handle **exceptions thrown from methods within that specific controller**.
+	    
+	2. **Global Exception Handling:** By creating a class annotated with `@ControllerAdvice`, you can define methods with `@ExceptionHandler` to handle **exceptions thrown from any controller in your application**. This is a more centralized approach to exception handling.
+
+7. **@Repository**
+   The `@Repository` annotation is a stereotype annotation in Spring Boot that marks a class as a repository bean. A repository bean is responsible for performing data access operations on a specific type of entity (domain object) using JPA (Java Persistence API). When you apply `@Repository` to a class, Spring Boot automatically detects it during component scanning.
+   
+   **Relationship with Spring Data JPA**
+	- Spring Data JPA builds upon the `@Repository` annotation by providing interfaces that extend `Repository` (the base interface).
+	- These extended interfaces, like `CrudRepository`, `JpaRepository`, and `PagingAndSortingRepository`, offer a broader range of data access methods.
+	- By extending these interfaces, your repository class inherits their functionality, reducing boilerplate code and streamlining data access.

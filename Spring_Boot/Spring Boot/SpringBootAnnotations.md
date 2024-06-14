@@ -26,14 +26,14 @@
 5. **@PathVariable**
    The `@PathVariable` annotation is a powerful tool for extracting data from the URL path itself. It allows you to capture dynamic values within the path and use them in your controller methods.
 	```java
-@GetMapping("/getUserById/{userId}")
-public User getUserByID(@PathVariable long userId) {
-	if (userService.getUserById(userId) == null) {
-	throw new UserNotFoundException("User Id not found - " + userId);
+	@GetMapping("/getUserById/{userId}")
+	public User getUserByID(@PathVariable long userId) {
+		if (userService.getUserById(userId) == null) {
+		throw new UserNotFoundException("User Id not found - " + userId);
+		}
+		return userService.getUserById(userId);
 	}
-	return userService.getUserById(userId);
-}
-```
+   ```
 	The name of the annotation attribute (`value` or `name`) specifies the name you want to use for the path variable. This name should match the placeholder name in the URL. Spring intercepts incoming requests and matches them to controller methods based on the URL pattern. When a match is found, Spring extracts the corresponding value from the URL path that aligns with the placeholder and assigns it to the method parameter annotated with `@PathVariable`.
 	You can mark `@PathVariable` parameters as optional using the `required` attribute set to `false`. This allows handling scenarios where the path variable might be missing in the request.
 6. **@ExceptionHandler**

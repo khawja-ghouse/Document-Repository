@@ -2,13 +2,13 @@ package com.skg.springboot.cruddemo.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skg.springboot.cruddemo.dao.EmployeeDAO;
 import com.skg.springboot.cruddemo.entity.Employee;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {

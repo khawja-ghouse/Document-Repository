@@ -1,6 +1,6 @@
 package com.skg.springboot.cruddemo.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "employee")

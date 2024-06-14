@@ -1,8 +1,10 @@
 package com.skg.springboot.cruddemo.dao;
 
 import com.skg.springboot.cruddemo.entity.Employee;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -62,6 +64,5 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
 		// remove employee
 		entityManager.remove(theEmployee);
 	}
-	
-	
+
 }

@@ -16,7 +16,7 @@ Curly braces define objects in JOSN. We have Object members that are name / valu
 ```
 
 The name is always in double quotes.
-![](images/JOSN_Example.png)
+![](Images/JOSN_Example.png)
 
 Whatever we have on left hand side of the colons will always be in double quotes.
 JSON Values: whatever we have on the right side of the colon, we can have different types of values.

@@ -1,7 +1,7 @@
 What is Hibernate?
 A framework for persisting / saving Java objects in database.
 www.hibernate.org/orm
-![](images/whatIsHibernate.png)
+![](Images/whatIsHibernate.png)
 
 Benefits of Hibernate
 1. Hibernate handles all of the low-level SQL
@@ -11,7 +11,7 @@ Benefits of Hibernate
 Object-To-Relational Mapping (ORM)
 1. The developer defines mapping between Java class and database table.
 
-![](images/ormMapping.png)
+![](Images/ormMapping.png)
 
 By default the hibernate converts **firstName** to **first_name** in database.
 
@@ -24,7 +24,7 @@ What is JPA?
 	
 	JPA - Vendor Implementations
 		There are many implementations of JPA but Hibernate and EclipseLink are popular implementations
-   ![](images/jpaImplementation.png)
+   ![](Images/jpaImplementation.png)
 	 
 	Spring boot default JPA implementation is Hibernate.
 What are the benefits of JPA
@@ -33,12 +33,12 @@ What are the benefits of JPA
 3. Can theoretically switch vendor implementations
 	1. Fox example, if Vendor ABC stops supporting their product.
 	2. You can switch to Vendor XYZ without vendor lock in
-	   ![](images/savingJavaObjectWithJPA.png)
+	   ![](Images/savingJavaObjectWithJPA.png)
 
 How does Hibernate / JPA relate to JDBC?
 
 Hibernate / JPA uses JDBC for all database communications
-![](images/Jpa_JDBC.png)
+![](Images/Jpa_JDBC.png)
 
 Automatic Data Source Configuration
  1. Based on configs, Spring Boot will automatically create the beans: DataSource, EntityManager,.. and many others.
@@ -78,8 +78,8 @@ Java Annotations
 Step 1:  Map class to database table
 Step 2: Map fields to database columns
 
-![](images/MapClassToDatabaseTable.png)
-![](images/MapfiledsToColumn.png)
+![](Images/MapClassToDatabaseTable.png)
+![](Images/MapfiledsToColumn.png)
 
 **@Column** is optional, If its not specified the column name is the same as Java field.
 Same goes with **@Table**, database table name is same as class name.
@@ -88,7 +88,7 @@ JPA Identity - Primary Key
 
 Example: 
 
-![](images/JPAIdentityPrimaryKey.png)![](images/idGenerationStrategies.png)
+![](Images/JPAIdentityPrimaryKey.png)![](Images/idGenerationStrategies.png)
 
 You can also define your own CUSTOM generation stratergy :-)
 Create implementation of `org.hibernate.id.IdentifierGenerator`

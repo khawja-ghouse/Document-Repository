@@ -8,11 +8,10 @@ tables and manage the lifecycle of these objects in a database context.
   relational data in Java applications.
 - **Key Concepts:**
     - **Entities:** Java classes annotated with `@Entity` that represent tables in a database.
-    - **Entity Relationships:** Annotations like `@OneToOne`, `@OneToMany`, `@ManyToOne`, and `@ManyToMany` to define
-      relationships between entities.
-    - **Persistence Context:** A set of entity instances that are managed by an Entity Manager, often referred to as
-      the "first-level cache."
-
+  - **Entity Relationships:** Annotations like `@OneToOne`, `@OneToMany`, `@ManyToOne`, and `@ManyToMany` to define
+    relationships between entities.
+  - **Persistence Context:** A set of entity instances that are managed by an Entity Manager, often referred to as the "
+    first-level cache."
 ### Entity Manager
 
 The Entity Manager is a central part of the JPA, responsible for interacting with the persistence context. It provides
@@ -21,7 +20,7 @@ database.
 
 - **Key Functions:**
 
-    - **Persist:** Save a new entity to the database.
+      - **Persist:** Save a new entity to the database.
     - **Merge:** Update an existing entity in the database.
     - **Remove:** Delete an entity from the database.
     - **Find:** Retrieve an entity by its primary key.
@@ -38,7 +37,7 @@ database.
       provider (like Hibernate, EclipseLink, etc.).
 2. **Role in Persistence:**
 
-    - **JPA:** Provides the overarching framework and guidelines for ORM and data persistence in Java applications.
+     - **JPA:** Provides the overarching framework and guidelines for ORM and data persistence in Java applications.
     - **Entity Manager:** Acts as the key component within this framework to manage the lifecycle and operations on
       entities, essentially bridging the application and the database.
 

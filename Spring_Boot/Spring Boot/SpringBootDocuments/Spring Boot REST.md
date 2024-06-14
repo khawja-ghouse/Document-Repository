@@ -1,20 +1,20 @@
 Most common use of REST is over HTTP. Leverage HTTP methods for CRUD operations.
-![](images/restOverHttp.png)
+![](Images/restOverHttp.png)
 
-![](images/httpMessage.png)
+![](Images/httpMessage.png)
 
-![](images/http_Request_Message.png)
+![](Images/http_Request_Message.png)
 
 Request Line : The HTTP command
 Header variables : Request Metadata
 Message body: contents of message
 
-![](images/httpResponseMessage.png)
+![](Images/httpResponseMessage.png)
 Request Line : Server protocol and status code.
 Header variables : Response Metadata
 Message body: contents of message(Response)
 
-![](images/httpResponseStatusCode.png)
+![](Images/httpResponseStatusCode.png)
 
 ## MIME Content type
 The message type is described by MIME content type.

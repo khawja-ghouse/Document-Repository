@@ -1,4 +1,4 @@
-![](images/springRestHelloWorld.png)
+![](Images/springRestHelloWorld.png)
 In Spring Framework, `@RestController` is an annotation used to define a RESTful web service. It combines `@Controller` and `@ResponseBody`, two other annotations, into a single convenient annotation.
 
 Here's what each of these annotations does:
@@ -46,18 +46,18 @@ public class MyController {
 JAVA JSON Data Binding
 Data Binding is a process of converting JSON data to a Java POJO
 
-![](images/javaJsonDataBinding.png)
+![](Images/javaJsonDataBinding.png)
 
 Data Binding is also known as Mapping / serialization or deserialization / Marshalling or Unmarshalling.
 
 	JSON Data Binding with Jakson Project behind the scenes.
 
 **Jakson handles data binding between JSON and Java Pojo( Spring boot starter web => automatically includes dependencies for Jakson)**
-![](images/jaksonBehindTheScenes.png)
+![](Images/jaksonBehindTheScenes.png)
 
 **@PathVariable**
 Path variables are a mechanism in Spring Boot that allow you to extract dynamic values from the URL path and use them within your controller methods. This makes your applications more flexible and RESTful by enabling you to define endpoints that accept specific data in the URL itself.
-![](images/pathVariablesBTS.png)
+![](Images/pathVariablesBTS.png)
 
 - You create a template in the request mapping using curly braces `{}` to represent the variable part of the URL.
 - Annotate the corresponding method parameter in your controller with `@PathVariable`
@@ -77,4 +77,4 @@ public class UserController {
 - By default, path variables are required. If a required path variable is missing in the request, Spring Boot throws an exception. You can make it optional using `@PathVariable(required = false)`.
 - You can specify a custom name for the path variable using `@PathVariable("customName")`.
 - You can use multiple path variables in the same request mapping and method.
-  ![](images/pathVariableBTS.png)
+  ![](Images/pathVariableBTS.png)

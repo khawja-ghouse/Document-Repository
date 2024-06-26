@@ -6,7 +6,7 @@ Now we will shift over Spring Data JPA for backend DAO. The below, mentioned poi
 EntityManager
 ![](Images/problemWithJPA.png)
 
-![](images/creatingDAO.png)
+![](Images/creatingDAO.png)
 One thing we have noticed while creating DAO's if we look at one method find by ID in above image most of the code is
 same the only difference is entity type and primary key.
 If we have to do the same with Product or Student or Customer the only difference is entity type and id other than this

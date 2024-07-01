@@ -35,9 +35,28 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(khawja, ghouse, nadeem);
     }*/
 
-    // No more Hard coded use the support for JDBC
+    // No more Hard coded use the support for JDB
+    // It uses default schema name and column names
+//    @Bean
+//    public UserDetailsManager userDetailsManager(DataSource dataSource){
+//        return new JdbcUserDetailsManager(dataSource);
+//    }
+
+    // To use custom tables and column names
     @Bean
-    public UserDetailsManager userDetailsManager(DataSource dataSource){
+    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+
+        // define a query to find the user by username
+        // user_id will be username from login
+        jdbcUserDetailsManager.setUsersByUsernameQuery(
+                "select user_id, pw, active from members where user_id=?"
+        );
+
+        // define a query to find authorities / roles by username
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+                "select user_id, role from roles where user_id=?"
+        );
         return new JdbcUserDetailsManager(dataSource);
     }
 

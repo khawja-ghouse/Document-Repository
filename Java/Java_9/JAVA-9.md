@@ -3,7 +3,6 @@
  Till java 8 interface only allowed default and static methods, from java 9 we also have support of private methods in interface.
 ```java
 import java.util.*;
-
 interface Util {
 	static int foo(){
 		return 5;
@@ -47,33 +46,33 @@ Prior to Java 9, creating an immutable list required using methods like `Collect
 
 1. `List.of()`
    ```java
-import java.util.List;
-
-public class ImmutableListExample {
-    public static void main(String[] args) {
-        List<String> fruits = List.of("Apple", "Banana", "Orange");
-        System.out.println(fruits);
+    import java.util.List;
+    
+    public class ImmutableListExample {
+        public static void main(String[] args) {
+            List<String> fruits = List.of("Apple", "Banana", "Orange");
+            System.out.println(fruits);
+        }
     }
-}
-```
+    ```
 
 2. `List.copyOf()`
    ```java
-import java.util.List;
-import java.util.ArrayList;
-
-public class ImmutableListCopyExample {
-    public static void main(String[] args) {
-        List<String> originalList = new ArrayList<>();
-        originalList.add("Red");
-        originalList.add("Green");
-        originalList.add("Blue");
-
-        List<String> immutableCopy = List.copyOf(originalList);
-        System.out.println(immutableCopy);
+    import java.util.List;
+    import java.util.ArrayList;
+    
+    public class ImmutableListCopyExample {
+        public static void main(String[] args) {
+            List<String> originalList = new ArrayList<>();
+            originalList.add("Red");
+            originalList.add("Green");
+            originalList.add("Blue");
+    
+            List<String> immutableCopy = List.copyOf(originalList);
+            System.out.println(immutableCopy);
+        }
     }
-}
-```
+    ```
 
 These factory methods provide a convenient and concise way to create immutable lists in Java 9 and later versions, reducing the need for boilerplate code and making code more readable.
 

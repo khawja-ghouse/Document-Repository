@@ -3,7 +3,7 @@ Programmers use Git for several reasons, primarily related to version control, c
 
 ### Chapter 1: Local Git
 #### Initial setup
-Once you’ve installed Git version 1.8 or above (as detailed in appendix A), the first
+Install Git version 1.8 or above, the first
 thing you need to do is to tell Git your name and email (particularly before creating
 any commits). Rather than usernames, Git uses a name and an email address to identify
 the author of a commit.
@@ -14,7 +14,7 @@ the author of a commit.
 ```
 #### Creating a repository: git init
 A Git repository is the local collection of all the files related to a particular Git version
-control system and contains a .git subdirectory in its root. Git keeps track of the state
+control system and contains a **.git** subdirectory in its root. Git keeps track of the state
 of the files in the repository’s directory on disk.
 
 Typically, you create a new repository by downloading another repository that
@@ -73,9 +73,19 @@ that’s typically stored on another computer. `git push` sends your new commits
 and `git fetch` retrieves from it any new commits made by others.
 
 Problem
-    You wish to add the new GitInPractice remote repository to your current repository.
-Solution
+ You wish to add the new **exampleRepository** remote repository to your current repository.
+ Solution
 1. Change directory to the Git repository:<br>![img.png](Images/repositoryCreated.png)
 2. Run git remote add origin with your repository URL appended. So if your username is `khawja-ghouse` and your repository is named exampleRepository, run `git remote add origin https://github.com/khawja-ghouse/ exampleRepository.git`. There will be no output.
 ![img_1.png](Images/creationOfRepository.png)
+
+### Pushing Changes to remote repository: git push
+You’ll eventually wish to send commits made in the local repository to a remote. To do
+this always requires an explicit action. Only changes specifically requested are sent,
+and Git (which can operate over HTTP, SSH , or its own protocol [git://]) ensures that
+only the differences between the repositories are sent. As a result, you can push small
+changes from a large local repository to a large remote repository very quickly as long
+as they have most commits in common.
+
+
 

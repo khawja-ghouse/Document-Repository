@@ -36,10 +36,10 @@ All methods have the same general form as main( ), which we have been using thus
 Let’s begin our study of the class with a simple example. Here is a class called Box that defines three instance variables: width, height, and depth. Currently, Box does not contain any methods (but some will be added soon). 
 
 ```java
-    class Box { 
-double width; 
-double height; 
-double depth;
+class Box { 
+ double width; 
+ double height; 
+ double depth;
 }
 ```
 As stated, a class defines a new type of data. In this case, the new data type is called Box. You will use this name to declare objects of type Box. It is important to remember that a class declaration only creates a template; it does not create an actual object. Thus, the preceding code does not cause any objects of type Box to come into existence.
@@ -101,3 +101,49 @@ The class name followed by parentheses specifies the constructor for the class. 
 
 It is important to understand that new allocates memory for an object during run time.
 
+Assigning Object Reference Variables:  
+
+Object reference variables act differently than you might expect when an assignment takes place. For example, what do you think the following fragment does?  
+Box b1 = new Box();  
+ Box b2 = b1;   
+
+You might think that b2 is being assigned a reference to a copy of the object referred to by b1. That is, you might think that b1 and b2 refer to separate and distinct objects. However, this would be wrong. Instead, after this fragment executes, **b1 and b2 will both refer to the same object**. The assignment of b1 to b2 did not allocate any memory or copy any part of the original object. It simply makes b2 refer to the same object as does b1. Thus, any changes made to the object through b2 will affect the object to which b1 is referring, since they are the same object. This situation is depicted here:
+
+![img.png](../Images/b1b2References.png)
+
+Although b1 and b2 both refer to the same object, they are not linked in any other way. For example, a subsequent assignment to b1 will simply unhook b1 from the original object without affecting the object or affecting b2.  
+For example:  
+Box b1 = new Box();   
+Box b2 = b1;  
+// ...  
+ b1 = null;  
+ Here, b1 has been set to null, but b2 still points to the original object.
+
+### Introducing Methods 
+
+This is the general form of a method:  
+type name(parameter-list)   
+{   
+  // body of method   
+}  
+Here, type specifies the type of data returned by the method. This can be any valid type, including class types that you create. If the method does not return a value, its return type must be void. The name of the method is specified by name. This can be any legal identifier other than those already used by other items within the current scope. The parameter-list is a sequence of type and identifier pairs separated by commas. Parameters are essentially variables that receive the value of the arguments passed to the method when it is called. If the method has no parameters, then the parameter list will be empty. Methods that have a return type other than void return a value to the calling routine using the following form of the return statement: return value; Here, value is the value returned. Methods in Java allow us to reuse the code without retyping the code.
+
+Method Declaration:  
+In general, method declarations has six components:    
+1.	Modifier: It defines the access type of the method i.e., from where it can be accessed in your application. In Java, there 4 types of access specifiers.   
+ •	public: It is accessible in all classes in your application.  
+ •	protected: It is accessible within the class in which it is defined and in its subclass/es  
+ •	private: It is accessible only within the class in which it is defined.  
+ •	default: It is declared/defined without using any modifier. It is accessible within the same class and package within which its class is defined.  
+2.	The return type: The data type of the value returned by the method or void if does not return a value.
+3.	Method Name: the rules for field names apply to method names as well, but the convention is a little different.
+4.	Parameter list: Comma-separated list of the input parameters is defined, preceded with their data type, within the enclosed parenthesis. If there are no parameters, you must use empty parentheses ().
+5.	Exception list: The exceptions you expect by the method can throw, you can specify these exception(s).
+6.	Method body: it is enclosed between braces. The code you need to be executed to perform your intended operations.
+
+![img.png](../Images/methodDetails.png)
+
+Types of methods in Java:  
+There are two types of methods in Java:  
+1.	**Predefined Method**: In Java, predefined methods are the method that is already defined in the Java class libraries is known as predefined methods. It is also known as the standard library method or built-in method. We can directly use these methods just by calling them in the program at any point.   
+2.	**User-defined Method**: The method written by the user or programmer is known as a user-defined method. These methods are modified according to the requirement.  

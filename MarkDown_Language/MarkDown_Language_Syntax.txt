@@ -1,5 +1,25 @@
-1) Write your Markdown content with proper line breaks (two spaces for a single line break, double Enter for a new paragraph)
+1) Write your Markdown content with proper line breaks (two spaces for a single line break, double Enter for a new paragraph).
 
-2) Command to add new Image ![name of the image ](URL) Example: ![img.png](../Images/initializingVaribale.png)
+2) Command to add new Image ![name of the image ](URL) Example: ![img.png](../Images/initializingVaribale.png).
 
 3) crl+b to make the text bold.
+
+4) Use * or - to make a bullet points.
+
+	4.1) Making sub points 
+	* sdfsdfsdfsfsdfsdf
+	  * sdfsdfsdf
+	  * sdfsdf
+	  * sdsdf
+		* afsdf
+		* sdfsdf
+		* sdfsdfsd
+	* sdfsfsdfsdf
+	* sdfsdfsfsdf
+	
+5) Prepare a table 
+   | abc | def |
+   |-----| --- |
+   | dffd| dfg |
+  
+6) 

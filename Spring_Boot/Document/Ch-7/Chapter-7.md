@@ -221,34 +221,34 @@ Here we are using the `@Entity` annotation to denote this class will be linked
 
 We are using the `@Table` annotation to link the class name with the database table name. This is an optional annotation. If this is skipped then it will be assumed that the java class and the database table will share a same name. It is not recommended as it might introduce breaking changes if there is a java class name refactoring.
 
-![[image-18.png]]
+![[Ch-7/Images/image-18.png]]
 
 As a next step we are mapping the entity class fields to the database columns using the `@Column()` annotation. The value inside the `name` attribute refers to the corresponding column name in the database table.
 
-![[image-19.png]]
+![[Ch-7/Images/image-19.png]]
 
 This `@Column()` annotation is optional.
 
-![[image-20.png]]
+![[Ch-7/Images/image-20.png]]
 
 The primary key is a core building block of the mysql tables. This is used to uniquely identify individual rows in a database table. This can not be a null value.
 
-![[image-21.png]]
+![[Ch-7/Images/image-21.png]]
 
 We have a notion of `AUTO_INCREMENT` in mysql which auto increments the primary key after each usage.
 
-![[image-22.png]]
+![[Ch-7/Images/image-22.png]]
 
 We can bring in this auto increment feature to the primary key binding with `@GeneratedValue()` annotation. With `strategy=GenerationType.IDENTITY` the primary key is generated and maintained by the database.
 
-![[image-23.png]]
+![[Ch-7/Images/image-23.png]]
 Here are the generation strategies that we could use.
 
-![[image-24.png]]
+![[Ch-7/Images/image-24.png]]
 
 We could we our own generation strategy if required.
 
-![[image-25.png]]
+![[Ch-7/Images/image-25.png]]
 
 With the initial theories taken care of let's now look into the actual Entity class creation,
 
@@ -343,23 +343,23 @@ As a part of this process we are going to have a Student Data Access Object clas
 
 This type of class Data Access Object (DAO) class are a common design pattern which acts as an interfacing helper class.
 
-![[image-26.png]]
+![[Ch-7/Images/image-26.png]]
 
 This DAO class is going to have the following methods.
 
-![[image-27.png]]
+![[Ch-7/Images/image-27.png]]
 
 Moving further towards the database interaction our Student DAO will need a JPA Entity Manager.
 
 `JPA Entity Manager` is the main component for saving / retrieving entities.
 
-![[image-28.png]]
+![[Ch-7/Images/image-28.png]]
 
 Now once the `Entity Manager` is established we can move one step ahead towards the DB operation. At this point we will need a `Data Source` information to interact with the database.
 
 The Data Source simply defines the DB connection info, the username etc.
 
-![[image-29.png]]Once the Entity Manager and the Data Source are auto created we can inject the Entity Manager into our DAO class to perform DB operations.
+![[Ch-7/Images/image-29.png]]Once the Entity Manager and the Data Source are auto created we can inject the Entity Manager into our DAO class to perform DB operations.
 
 ### Entity Manager vs JPA Repository
 
@@ -368,16 +368,16 @@ We might stumble upon the confusion about using Entity Manager vs JPA Repository
 - In simple terms if we need low level control and flexibility we can use EntityManager.
 - If we need high level abstraction and minimal coding we can use JPA Repository.
 
-![[image-30.png]]
+![[Ch-7/Images/image-30.png]]
 
-![[image-31.png]]
+![[Ch-7/Images/image-31.png]]
 
 #### Development steps to create Student DAO
 
-![[image-32.png]]
+![[Ch-7/Images/image-32.png]]
 
 ##### Step - 1 : Define DAO Interface
-![[image-33.png]]
+![[Ch-7/Images/image-33.png]]
 
 ```java
 // StudentDAO.java
@@ -391,7 +391,7 @@ public interface StudentDAO {
 ```
 
 ##### Step - 2 : Define DAO implementation
-![[image-34.png]]
+![[Ch-7/Images/image-34.png]]
 
 In this step we are injecting `EntityManager` using spring constructor dependency injection using `@AutoWired` Annotation.
 
@@ -401,17 +401,17 @@ If we can see we have added a `@Repository` annotation at the class level whic
 2. Supports component scanning as this annotation extends from `@Component`.
 3. Translates JDBC exceptions means the checked exceptions from the JDBC implementations are converted into un-checked exceptions to ease the coding process.
 
-![[image-35.png]]
+![[Ch-7/Images/image-35.png]]
 
 We also notice there is a `@Transactional` annotation applied to the `save(...)` method. This is a powerful annotation which initiates and ends a SQL transaction for us.
 
 This should be imported from `org.springframework.transaction.annotation.Transactional` instead of `jakarta.transaction.Transactional`
 
-![[image-36.png]]
+![[Ch-7/Images/image-36.png]]
 
 ##### Step - 3 : Update the main App
 
-![[image-37.png]]
+![[Ch-7/Images/image-37.png]]
 
 ```java
 // CruddemoApplication.java
@@ -456,14 +456,14 @@ With this we have successfully saved this student into the database.
 
 In this section we will learn to read objects from the database using JPA which in turn uses `EntityManager`.
 
-![[image-38.png]]
+![[Ch-7/Images/image-38.png]]
 
 Let's look at the development process
 
-![[image-39.png]]
+![[Ch-7/Images/image-39.png]]
 
 ##### Step - 1 : Add new method to DAO Interface
-![[image-40.png]]
+![[Ch-7/Images/image-40.png]]
 
 ```java
 // StudentDAO.java
@@ -480,7 +480,7 @@ public interface StudentDAO {
 ```
 
 ##### Step - 2 : Define DAO implementation
-![[image-41.png]]
+![[Ch-7/Images/image-41.png]]
 
 ```java
 // StudentDAOImpl.java
@@ -520,7 +520,7 @@ public class StudentDAOImpl implements StudentDAO {
 ```
 
 ##### Step - 3 : Update Main App
-![[image-42.png]]
+![[Ch-7/Images/image-42.png]]
 
 ```java
 // CruddemoApplication.java
@@ -573,26 +573,26 @@ JPA has its own querying language JPQL for querying objects. It is similar to co
 
 JPQL is based on `entityName` and `entityFields` where as SQL is based on table name and table columns.
 
-![[image-43.png]]
+![[Ch-7/Images/image-43.png]]
 
-![[image-44.png]]
+![[Ch-7/Images/image-44.png]]
 
-![[image-45.png]]
-![[image-46.png]]
-![[image-47.png]]
+![[Ch-7/Images/image-45.png]]
+![[Ch-7/Images/image-46.png]]
+![[Ch-7/Images/image-47.png]]
 
-![[image-48.png]]
-![[image-49.png]]
+![[Ch-7/Images/image-48.png]]
+![[Ch-7/Images/image-49.png]]
 
-![[image-50.png]]
+![[Ch-7/Images/image-50.png]]
 
 Development Process for Querying objects with JPA
 
-![[image-51.png]]
+![[Ch-7/Images/image-51.png]]
 
 ##### Step - 1 : Add new method to DAO interface
 
-![[image-52.png]]
+![[Ch-7/Images/image-52.png]]
 
 ```java
 // StudentDAO.java
@@ -665,7 +665,7 @@ public class StudentDAOImpl implements StudentDAO {
 
 ##### Step - 3 : Update main App
 
-![[image-54.png]]
+![[Ch-7/Images/image-54.png]]
 
 ```java
 // CruddemoApplication.java
@@ -728,19 +728,19 @@ In this section we will try the existing information for an existing user.
 
 We will start by retrieving the object from the database then we will modify and update the entry in the DB.
 
-![[image-55.png]]
+![[Ch-7/Images/image-55.png]]
 
 We have the power to update multiple records as well,
 
-![[image-56.png]]
+![[Ch-7/Images/image-56.png]]
 
 Let's look at the development process,
 
-![[image-57.png]]
+![[Ch-7/Images/image-57.png]]
 
 ##### Step - 1 : Add new method to DAO interface
 
-![[image-58.png]]
+![[Ch-7/Images/image-58.png]]
 
 ```java
 // StudentDAO.java
@@ -763,7 +763,7 @@ public interface StudentDAO {
 
 ##### Step - 2 : Define DAO implementation
 
-![[image-59.png]]
+![[Ch-7/Images/image-59.png]]
 
 ```java
 // StudentDAOImpl.java
@@ -820,7 +820,7 @@ public class StudentDAOImpl implements StudentDAO {
 
 ##### Step - 3 : Update Main App
 
-![[image-60.png]]
+![[Ch-7/Images/image-60.png]]
 
 ```java
 // CruddemoApplication.java
@@ -889,23 +889,23 @@ In this section we will learn deleting an object with JPA.
 
 We can delete a student by fetching it from the DB first.
 
-![[image-61.png]]
+![[Ch-7/Images/image-61.png]]
 
 We can also delete single or multiple entries based on certain condition.
 
-![[image-62.png]]
+![[Ch-7/Images/image-62.png]]
 
 We can also delete all entities without any condition.
 
-![[image-63.png]]
+![[Ch-7/Images/image-63.png]]
 
 Let's look at the development process.
 
-![[image-64.png]]
+![[Ch-7/Images/image-64.png]]
 
 ##### Step - 1 : Add new method to DAO interface
 
-![[image-65.png]]
+![[Ch-7/Images/image-65.png]]
 
 ```java
 package com.khwaja.curddemo.dao;

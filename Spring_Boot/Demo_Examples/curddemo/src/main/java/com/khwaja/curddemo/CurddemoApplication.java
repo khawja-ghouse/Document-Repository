@@ -20,10 +20,10 @@ public class CurddemoApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-//			createStudent(studentDAO);
-//			readStudent(studentDAO);
-//			findAll(studentDAO);
-//			updateStudent(studentDAO);
+			createStudent(studentDAO);
+			readStudent(studentDAO);
+			findAll(studentDAO);
+			updateStudent(studentDAO);
 			deleteStudent(studentDAO);
 		};
 	}

@@ -6,7 +6,7 @@ Kafka is called event streaming because it enables the continuous flow of events
 
 Consider the example of any Payment application.
 
-![[Pasted image 20241116205116.png]]
+![[image_1.png]]
 
 Distributed  System
 ![[Pasted image 20241116205240.png]]

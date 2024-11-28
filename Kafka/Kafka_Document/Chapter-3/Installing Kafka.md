@@ -18,25 +18,25 @@ Extract the kafka Zip and follow the steps as shown below
 ### Steps for setting Kafka with Kraft
 
 #### Generate the cluster ID
-![](Chapter-3/Images/Image_1.png)
+![](Images/Image_1.png)
 
 #### Set the Cluster ID generated above
-![](Chapter-3/Images/Image_2.png)
+![](Images/Image_2.png)
 
 #### To format log directories 
 kafka-storage.bat format -t %KAFKA_CLUSTER_ID% -c ../../config/kraft/server.properties
 
-![](Chapter-3/Images/Image_3.png)
+![](Images/Image_3.png)
 
 Start the Kafka Server
 To start kafka server kafka-server-start.bat ../../config/kraft/server.properties
 
-![](Chapter-3/Images/Image_4.png)
+![](Images/Image_4.png)
 
 #### Create topic 
 kafka-topics.bat --create --topic first-kraft-topic --bootstrap-server localhost:9092
 
-![](Chapter-3/Images/Image_5.png)
+![](Images/Image_5.png)
 
 #### Produce the messages on topic 
 `kafka-console-producer.bat --topic first-kraft-topic --bootstrap-server localhost:9092`

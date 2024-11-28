@@ -23,3 +23,5 @@
    | dffd| dfg |
   
 6) [Link name](URL)
+
+7) --- (For Horizontal Line)

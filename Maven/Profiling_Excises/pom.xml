@@ -73,7 +73,6 @@
 								</goals>
 								<configuration>
 									<tasks>
-										<
 										<echo>Executing on local profile !!</echo>
 										<delete file="src/main/resources/profile.txt" />
 										<copy file="src/main/resources/local.txt" tofile="src/main/resources/profile.txt" />

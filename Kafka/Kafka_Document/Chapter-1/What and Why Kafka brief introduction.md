@@ -6,10 +6,11 @@ Kafka is called event streaming because it enables the continuous flow of events
 
 Consider the example of any Payment application.
 
-![[image_1.png]]
+![](Chapter-1/Images/Image_1.png)
 
 Distributed  System
-![[Pasted image 20241116205240.png]]
+![](Chapter-1/Images/Image_2.png)
+
 
 Kafka is called distributed because it operates as a cluster of brokers, spreading data across multiple servers for fault tolerance and scalability. This allows producers, consumers, and partitions to handle high-throughput messaging efficiently, even under heavy workloads.
 As kafka is distribute  if in case any server goes down then any other server comes up to avoid the down time which increases the through put.
@@ -30,15 +31,16 @@ Now, let's relate this to a real-time system. Suppose we have two applications: 
 
 This is where **Kafka** comes into the picture. Kafka acts as a **letterbox** between the two applications. App1 can send data to Kafka, which stores it temporarily. When App2 becomes available, Kafka delivers the data to App2. This ensures no data is lost, even if one of the applications is unavailable at the time of delivery.
 
-![[Pasted image 20241116211914.png]]
+![](Chapter-1/Images/Image_3.png)
 
 The need for a messaging system arises when applications must communicate reliably without losing data during downtime. Kafka fulfils this role effectively by storing messages until they can be retrieved.
 In scenarios with multiple applications, managing numerous connections can become complex. Kafka simplifies communication and helps in handling diverse data formats from different applications smoothly.
 As applications grow, challenges such as varying data formats and connection types can emerge. Kafka provides a robust solution to mitigate these issues and maintain efficient data flow.
 
-![[Pasted image 20241116212000.png]]
+![](Chapter-1/Images/Image_4.png)
+
 
 Kafka centralizes message handling, decreasing the number of connections significantly compared to previous methods, which optimized resource usage and improved performance.
 The Pub/Sub model in Kafka involves three main components: publisher, subscriber, and message broker, facilitating organized message distribution and retrieval.
 
-![[Pasted image 20241116212248.png]]
+![](Chapter-1/Images/Image_5.png)

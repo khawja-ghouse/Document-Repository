@@ -22,8 +22,8 @@ Here’s the list of Kafka components:
 	
 	- Organizes data; producers write to a specific topic, and consumers read from it.
 	- Topics can have one or more **partitions**, which are sub-divisions of the topic. 
-	 
-	![[Pasted image 20241117181339.png]]
+
+	![[Chapter-2/Images/Image_2.png]]
 
 5. Partion:
 	A **partition** in Kafka is like a slice of a larger pie (the topic). It’s a smaller, manageable chunk of data within a topic. Each topic is divided into one or more partitions to help distribute and process data more efficiently.
@@ -46,7 +46,7 @@ Here’s the list of Kafka components:
 	        - If a consumer has processed up to offset **5**, it knows the next message to read is at offset **6**.
 	4. **Durable**:
 	    - Kafka keeps a record of offsets for a configurable retention period. Consumers can use this to resume processing from a specific offset after a failure.
-   ![[Pasted image 20241117182142.png]]
+   ![[Chapter-2/Images/Image_3.png]]
 	Suppose a topic has a partition with the following messages:
 											
 	- Offset 0: `{"order_id": 1, "item": "Laptop"}`
@@ -75,6 +75,6 @@ Here’s the list of Kafka components:
     
   Cluster:
    A **Kafka cluster** is a group of one or more Kafka brokers working together to provide high availability, fault tolerance, and scalability for message streaming. It forms the backbone of a Kafka system, managing data distribution, storage, and processing across its nodes.
-   ![[Pasted image 20241117180726.png]]
+   ![[Chapter-2/Images/Image_1.png]]
    
 1. 

@@ -1,7 +1,7 @@
 ### Steps to make a kafka Producer.
 
 1. Start the kafka with Kraft.
-   ![[Pasted image 20241120163627.png]]
+   ![](Images/Image_1.png)
 	 `.\kafka-server-start.bat ..\..\config\kraft\server.properties`
 	
 2. Update application properties with required Serialization properties 
@@ -97,14 +97,14 @@ public class EvenPublisher {
 ```
 3. Hit the URL with required message
    
-   ![[Pasted image 20241120173103.png]]
+   ![](Images/Image_3.png)
    
-   ![[Pasted image 20241120173131.png]]
+   ![](Images/Image_4.png)
    
     
     After publishing few messages we can check the details of the message stored Partion and Offset Value with Offset Explorer tool as shown below
 	
-	![[Pasted image 20241120173205.png]]
+	![](Images/Image_5.png)
 
 	The default configuration applied by creating a topic by Spring is as shown below:
 	

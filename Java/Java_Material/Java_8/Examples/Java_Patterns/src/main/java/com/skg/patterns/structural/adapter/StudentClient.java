@@ -23,8 +23,6 @@ public class StudentClient {
         studentList.add(new SchoolStudentAdapter(schoolStudent));
 
         studentList.forEach(System.out::println);
-
     }
-
 
 }

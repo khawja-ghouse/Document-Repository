@@ -159,3 +159,250 @@ true
 
 **Explanation** : Whenever we create a String Object, two objects will be created i.e. One in the Heap Area and One in the String constant pool and the String object reference always points to heap area object. When line-1 execute, it will create two objects and pointing to the heap area created object. Now when line-2 executes, it will refer to the object which is in the SCP. Again when line-3 executes, it refers to the same object which is in the SCP area because the content is already available in the SCP area. No need to create a new one object.  
 
+### **StringBuffer in Java**
+
+`StringBuffer` is a class in Java's `java.lang` package used to create mutable (modifiable) strings. Unlike `String` objects, which are immutable, `StringBuffer` objects allow you to modify the content of the string without creating a new object. This makes it more efficient when you need to perform many operations like appending, deleting, or inserting characters.
+
+---
+
+### **Key Features of StringBuffer**
+1. **Mutable**:
+   - The content of a `StringBuffer` object can be changed after creation.
+   - Example:
+     ```java
+     StringBuffer sb = new StringBuffer("Hello");
+     sb.append(" World");
+     System.out.println(sb); // Output: Hello World
+     ```
+
+2. **Thread-Safe**:
+   - `StringBuffer` is synchronized, meaning it is thread-safe and can be used safely in multi-threaded environments.
+   - However, this synchronization can cause slight performance overhead.
+
+3. **Dynamic Length**:
+   - A `StringBuffer` dynamically resizes itself to accommodate new characters if needed.
+
+4. **Efficient for Modifications**:
+   - Operations like append, insert, or delete are faster than creating new `String` objects repeatedly.
+
+---
+
+### **Common Methods in StringBuffer**
+
+| **Method**       | **Description**                                                                 |
+|-------------------|---------------------------------------------------------------------------------|
+| `append(String)` | Appends the specified string to the end of the current sequence.                |
+| `insert(int offset, String str)` | Inserts the specified string at the specified position.                      |
+| `replace(int start, int end, String str)` | Replaces the characters in a substring with the given string.           |
+| `delete(int start, int end)` | Removes the substring from the specified start index to end index.             |
+| `reverse()`       | Reverses the sequence of characters.                                           |
+| `capacity()`      | Returns the current capacity of the buffer.                                    |
+| `ensureCapacity(int minimumCapacity)` | Ensures that the capacity is at least the specified minimum.               |
+| `charAt(int index)` | Returns the character at the specified index.                                |
+| `length()`        | Returns the length of the string.                                              |
+| `setLength(int newLength)` | Sets the length of the string, truncating or padding as needed.                |
+| `substring(int start, int end)` | Returns a new `String` containing the specified substring.                    |
+
+---
+
+### **Examples**
+
+1. **Append**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuffer sb = new StringBuffer("Java");
+           sb.append(" Programming");
+           System.out.println(sb); // Output: Java Programming
+       }
+   }
+   ```
+
+2. **Insert**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuffer sb = new StringBuffer("Hello!");
+           sb.insert(5, " World");
+           System.out.println(sb); // Output: Hello World!
+       }
+   }
+   ```
+
+3. **Delete**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuffer sb = new StringBuffer("Programming");
+           sb.delete(3, 6);
+           System.out.println(sb); // Output: Proamming
+       }
+   }
+   ```
+
+4. **Reverse**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuffer sb = new StringBuffer("Java");
+           sb.reverse();
+           System.out.println(sb); // Output: avaJ
+       }
+   }
+   ```
+
+5. **Replace**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuffer sb = new StringBuffer("Hello World!");
+           sb.replace(6, 11, "Java");
+           System.out.println(sb); // Output: Hello Java!
+       }
+   }
+   ```
+
+---
+
+### **Difference Between String, StringBuffer, and StringBuilder**
+| **Feature**          | **String**               | **StringBuffer**              | **StringBuilder**              |
+|-----------------------|--------------------------|--------------------------------|---------------------------------|
+| **Mutability**        | Immutable               | Mutable                       | Mutable                        |
+| **Thread-Safe**       | No                      | Yes (Synchronized)            | No                             |
+| **Performance**       | Slower due to immutability | Slower due to synchronization | Faster due to no synchronization |
+| **Use Case**          | When immutability is needed | When thread-safety is required | When thread-safety is not required |
+
+---
+### **StringBuilder in Java**
+
+`StringBuilder` is a class in Java's `java.lang` package that is used to create mutable (modifiable) strings, similar to `StringBuffer`. However, unlike `StringBuffer`, **`StringBuilder` is not synchronized**, making it faster but not thread-safe. It is preferred when you don't need thread safety and want better performance for string manipulations.
+
+---
+
+### **Key Features of StringBuilder**
+1. **Mutable Strings**:
+   - The content of a `StringBuilder` object can be changed after creation.
+   - Example:
+     ```java
+     StringBuilder sb = new StringBuilder("Hello");
+     sb.append(" World");
+     System.out.println(sb); // Output: Hello World
+     ```
+
+2. **Not Thread-Safe**:
+   - `StringBuilder` is not synchronized, so it should not be used in multi-threaded environments where multiple threads might modify the same object.
+
+3. **Dynamic Length**:
+   - A `StringBuilder` dynamically resizes itself to accommodate new characters.
+
+4. **Efficient**:
+   - It is faster than `StringBuffer` since it does not have the overhead of synchronization.
+
+---
+
+### **Common Methods in StringBuilder**
+
+| **Method**               | **Description**                                                                 |
+|---------------------------|---------------------------------------------------------------------------------|
+| `append(String str)`      | Appends the specified string to the current sequence.                          |
+| `insert(int offset, String str)` | Inserts the specified string at the given position.                              |
+| `replace(int start, int end, String str)` | Replaces the characters in a substring with the specified string.                 |
+| `delete(int start, int end)`       | Removes the characters in the specified range.                                  |
+| `reverse()`               | Reverses the sequence of characters in the builder.                            |
+| `capacity()`              | Returns the current capacity of the builder.                                   |
+| `ensureCapacity(int min)` | Ensures that the builder's capacity is at least the specified minimum.          |
+| `charAt(int index)`       | Returns the character at the specified index.                                  |
+| `length()`                | Returns the number of characters in the builder.                               |
+| `setLength(int newLength)`| Sets the length of the sequence, truncating or padding as needed.              |
+| `substring(int start, int end)`   | Returns a new `String` containing the specified substring.                        |
+
+---
+
+### **Examples**
+
+1. **Append**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuilder sb = new StringBuilder("Java");
+           sb.append(" Programming");
+           System.out.println(sb); // Output: Java Programming
+       }
+   }
+   ```
+
+2. **Insert**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuilder sb = new StringBuilder("Hello!");
+           sb.insert(5, " World");
+           System.out.println(sb); // Output: Hello World!
+       }
+   }
+   ```
+
+3. **Delete**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuilder sb = new StringBuilder("Programming");
+           sb.delete(3, 6);
+           System.out.println(sb); // Output: Proamming
+       }
+   }
+   ```
+
+4. **Reverse**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuilder sb = new StringBuilder("Java");
+           sb.reverse();
+           System.out.println(sb); // Output: avaJ
+       }
+   }
+   ```
+
+5. **Replace**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           StringBuilder sb = new StringBuilder("Hello World!");
+           sb.replace(6, 11, "Java");
+           System.out.println(sb); // Output: Hello Java!
+       }
+   }
+   ```
+
+---
+
+### **Difference Between String, StringBuffer, and StringBuilder**
+
+| **Feature**          | **String**               | **StringBuffer**              | **StringBuilder**              |
+|-----------------------|--------------------------|--------------------------------|---------------------------------|
+| **Mutability**        | Immutable               | Mutable                       | Mutable                        |
+| **Thread-Safe**       | No                      | Yes (Synchronized)            | No                             |
+| **Performance**       | Slower due to immutability | Slower due to synchronization | Faster due to no synchronization |
+| **Use Case**          | When immutability is needed | When thread-safety is required | When thread-safety is not required |
+
+---
+
+### **When to Use StringBuilder?**
+- Use `StringBuilder` when you need to perform many string modifications and **thread safety is not a concern**.
+- It is particularly useful for single-threaded applications or local manipulations where performance is critical.
+
+---
+
+### **Key Points to Remember**
+1. **StringBuilder is faster than StringBuffer** due to the lack of synchronization.
+2. It is ideal for **repeated string operations** like concatenation, insertion, or deletion.
+3. Use it only in **single-threaded environments**. For multi-threaded environments, prefer `StringBuffer`.
+
+
+### **When to Use StringBuffer?**
+- Use `StringBuffer` when you need to perform many string modifications in a **multi-threaded environment** and need thread-safety.
+- For single-threaded applications, prefer `StringBuilder`, which is faster as it is not synchronized.
+
+
+

@@ -381,3 +381,139 @@ class MyThread {
 	}
 }
 ```
+When using an anonymous inner class, **all abstract methods of the class or interface must be implemented** within the anonymous inner class. For a concrete class, you can override any method you wish, but you don’t need to override all of them.
+
+Here's how it works:
+
+---
+
+### **1. With Interfaces Having Multiple Methods**
+Consider an interface with multiple methods:
+```java
+interface Calculator {
+    int add(int a, int b);
+    int subtract(int a, int b);
+}
+```
+
+We can use an anonymous inner class to implement both methods:
+```java
+public class Main {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator() {
+            @Override
+            public int add(int a, int b) {
+                return a + b;
+            }
+
+            @Override
+            public int subtract(int a, int b) {
+                return a - b;
+            }
+        };
+
+        System.out.println("Addition: " + calculator.add(10, 5));       // Output: Addition: 15
+        System.out.println("Subtraction: " + calculator.subtract(10, 5)); // Output: Subtraction: 5
+    }
+}
+```
+
+Here:
+- The anonymous inner class implements both methods of the `Calculator` interface.
+- If we fail to implement either method, the code will not compile.
+
+---
+
+### **2. With Abstract Classes Having Multiple Methods**
+An abstract class can have a mix of abstract and concrete methods. You must implement all abstract methods but can choose whether to override concrete ones.
+
+Example:
+```java
+abstract class Shape {
+    abstract double area();
+    abstract double perimeter();
+
+    void display() {
+        System.out.println("This is a shape.");
+    }
+}
+```
+
+Using an anonymous inner class:
+```java
+public class Main {
+    public static void main(String[] args) {
+        Shape rectangle = new Shape() {
+            double length = 5;
+            double width = 3;
+
+            @Override
+            double area() {
+                return length * width;
+            }
+
+            @Override
+            double perimeter() {
+                return 2 * (length + width);
+            }
+        };
+
+        System.out.println("Area: " + rectangle.area());           // Output: Area: 15.0
+        System.out.println("Perimeter: " + rectangle.perimeter()); // Output: Perimeter: 16.0
+        rectangle.display();                                       // Output: This is a shape.
+    }
+}
+```
+
+Here:
+- Both abstract methods (`area` and `perimeter`) are implemented.
+- The concrete method `display` is not overridden but can still be called.
+
+---
+
+### **3. Overriding Multiple Methods in a Concrete Class**
+If you're extending a concrete class, you can override only the methods you need.
+
+Example:
+```java
+class Printer {
+    void print() {
+        System.out.println("Default Printing...");
+    }
+
+    void scan() {
+        System.out.println("Default Scanning...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Printer customPrinter = new Printer() {
+            @Override
+            void print() {
+                System.out.println("Custom Printing...");
+            }
+
+            @Override
+            void scan() {
+                System.out.println("Custom Scanning...");
+            }
+        };
+
+        customPrinter.print(); // Output: Custom Printing...
+        customPrinter.scan();  // Output: Custom Scanning...
+    }
+}
+```
+
+Here:
+- Both methods (`print` and `scan`) are overridden in the anonymous inner class.
+- It’s not necessary to override every method in a concrete class—only the ones you want to customize.
+
+---
+
+### **Key Notes**:
+1. **Interfaces**: All methods in the interface must be implemented.
+2. **Abstract Classes**: All abstract methods must be implemented; overriding concrete methods is optional.
+3. **Concrete Classes**: Overriding any method is optional.
+4. **Inner Class Limitations**: You can’t add new methods to the anonymous inner class—you can only implement or override existing methods.
